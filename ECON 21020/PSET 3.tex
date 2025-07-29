@@ -1,0 +1,364 @@
+\documentclass[11pt]{article}
+
+% NOTE: Add in the relevant information to the commands below; or, if you'll be using the same information frequently, add these commands at the top of paolo-pset.tex file. 
+\newcommand{\name}{Agustín Esteva}
+\newcommand{\email}{aesteva@uchicago.edu}
+\newcommand{\classnum}{20210}
+\newcommand{\subject}{Econometric}
+\newcommand{\instructors}{Murilo Ramos}
+\newcommand{\assignment}{Problem Set 1}
+\newcommand{\semester}{Summer 2025}
+\newcommand{\duedate}{\today}
+\newcommand{\bA}{\mathbf{A}}
+\newcommand{\bB}{\mathbf{B}}
+\newcommand{\bC}{\mathbf{C}}
+\newcommand{\bD}{\mathbf{D}}
+\newcommand{\bE}{\mathbf{E}}
+\newcommand{\bF}{\mathbf{F}}
+\newcommand{\bG}{\mathbf{G}}
+\newcommand{\bH}{\mathbf{H}}
+\newcommand{\bI}{\mathbf{I}}
+\newcommand{\bJ}{\mathbf{J}}
+\newcommand{\bK}{\mathbf{K}}
+\newcommand{\bL}{\mathbf{L}}
+\newcommand{\bM}{\mathbf{M}}
+\newcommand{\bN}{\mathbf{N}}
+\newcommand{\bO}{\mathbf{O}}
+\newcommand{\bP}{\mathbf{P}}
+\newcommand{\bQ}{\mathbf{Q}}
+\newcommand{\bR}{\mathbf{R}}
+\newcommand{\bS}{\mathbf{S}}
+\newcommand{\bT}{\mathbf{T}}
+\newcommand{\bU}{\mathbf{U}}
+\newcommand{\bV}{\mathbf{V}}
+\newcommand{\bW}{\mathbf{W}}
+\newcommand{\bX}{\mathbf{X}}
+\newcommand{\bY}{\mathbf{Y}}
+\newcommand{\bZ}{\mathbf{Z}}
+\newcommand{\Vol}{\text{Vol}}
+\newcommand{\MSE}{\text{MSE}}
+\newcommand{\Bias}{\text{Bias}}
+\newcommand{\Var}{\text{Var}}
+\newcommand{\Cov}{\text{Cov}}
+\newcommand{\Corr}{\text{Corr}}
+
+
+
+%% blackboard bold math capitals
+\newcommand{\bbA}{\mathbb{A}}
+\newcommand{\bbB}{\mathbb{B}}
+\newcommand{\bbC}{\mathbb{C}}
+\newcommand{\bbD}{\mathbb{D}}
+\newcommand{\bbE}{\mathbb{E}}
+\newcommand{\bbF}{\mathbb{F}}
+\newcommand{\bbG}{\mathbb{G}}
+\newcommand{\bbH}{\mathbb{H}}
+\newcommand{\bbI}{\mathbb{I}}
+\newcommand{\bbJ}{\mathbb{J}}
+\newcommand{\bbK}{\mathbb{K}}
+\newcommand{\bbL}{\mathbb{L}}
+\newcommand{\bbM}{\mathbb{M}}
+\newcommand{\bbN}{\mathbb{N}}
+\newcommand{\bbO}{\mathbb{O}}
+\newcommand{\bbP}{\mathbb{P}}
+\newcommand{\bbQ}{\mathbb{Q}}
+\newcommand{\bbR}{\mathbb{R}}
+\newcommand{\bbS}{\mathbb{S}}
+\newcommand{\bbT}{\mathbb{T}}
+\newcommand{\bbU}{\mathbb{U}}
+\newcommand{\bbV}{\mathbb{V}}
+\newcommand{\bbW}{\mathbb{W}}
+\newcommand{\bbX}{\mathbb{X}}
+\newcommand{\bbY}{\mathbb{Y}}
+\newcommand{\bbZ}{\mathbb{Z}}
+
+%% script math capitals
+\newcommand{\sA}{\mathscr{A}}
+\newcommand{\sB}{\mathscr{B}}
+\newcommand{\sC}{\mathscr{C}}
+\newcommand{\sD}{\mathscr{D}}
+\newcommand{\sE}{\mathscr{E}}
+\newcommand{\sF}{\mathscr{F}}
+\newcommand{\sG}{\mathscr{G}}
+\newcommand{\sH}{\mathscr{H}}
+\newcommand{\sI}{\mathscr{I}}
+\newcommand{\sJ}{\mathscr{J}}
+\newcommand{\sK}{\mathscr{K}}
+\newcommand{\sL}{\mathscr{L}}
+\newcommand{\sM}{\mathscr{M}}
+\newcommand{\sN}{\mathscr{N}}
+\newcommand{\sO}{\mathscr{O}}
+\newcommand{\sP}{\mathscr{P}}
+\newcommand{\sQ}{\mathscr{Q}}
+\newcommand{\sR}{\mathscr{R}}
+\newcommand{\sS}{\mathscr{S}}
+\newcommand{\sT}{\mathscr{T}}
+\newcommand{\sU}{\mathscr{U}}
+\newcommand{\sV}{\mathscr{V}}
+\newcommand{\sW}{\mathscr{W}}
+\newcommand{\sX}{\mathscr{X}}
+\newcommand{\sY}{\mathscr{Y}}
+\newcommand{\sZ}{\mathscr{Z}}
+
+
+\renewcommand{\emptyset}{\O}
+
+\newcommand{\abs}[1]{\lvert #1 \rvert}
+\newcommand{\norm}[1]{\lVert #1 \rVert}
+\newcommand{\sm}{\setminus}
+
+
+\newcommand{\sarr}{\rightarrow}
+\newcommand{\arr}{\longrightarrow}
+
+% NOTE: Defining collaborators is optional; to not list collaborators, comment out the line below.
+%\newcommand{\collaborators}{Alyssa P. Hacker (\texttt{aphacker}), Ben Bitdiddle (\texttt{bitdiddle})}
+
+\input{paolo-pset.tex}
+
+% NOTE: To compile a version of this pset without problems, solutions, or reflections, uncomment the relevant line below.
+
+%\excludeversion{problem}
+%\excludeversion{solution}
+%\excludeversion{reflection}
+
+\begin{document}	
+	
+	% Use the \psetheader command at the beginning of a pset. 
+	\psetheader
+\section*{Problem 1}
+
+Stock and Watson, Exercises 4.5*, 4.9, 4.12, 5.2, 5.5*, 5.6*, E5.1*
+
+(* indicates exercises that are recommended but not required for submission.)
+
+\begin{enumerate}
+    \item (4.9)
+    \begin{enumerate}
+        \item A regression yields $\hat{\beta}_1 = 0.$ Show that $R^2 = 0.$ \begin{solution}
+            It suffices to show that $\text{ESS} =0.$ Computing,
+            \begin{align*}
+                \sum (\hat y_i - \bar y)^2 &= \sum (\hat\beta_0  - \bar y)^2\\
+                &= \sum (\hat \beta_0 - (\hat\beta_0 + \hat\beta_1\bar x)) ^2\\
+                &= 0
+            \end{align*}
+        \end{solution}
+        \item A regression yields $R^2 = 0.$ Does this imply that $\hat\beta_1 = 0?$
+        \begin{solution}
+            Yes, we have that $\text{ESS} = 0$ iff 
+            \[\sum (\hat Y_i - \bar Y)^2 = 0 \iff \forall i, \hat Y_i = \bar Y \iff \forall i, \,\hat\beta_0 +\hat\beta_1X_i = \hat\beta_0 + \hat\beta_1 \bar X \] which happens iff $\hat\beta_1 = 0$ 
+        \end{solution}
+    \end{enumerate}
+    \item (4.12) 
+    \begin{enumerate}
+        \item 
+            Show that $\hat\Corr_{XY}^2(X,Y) = R^2.$
+    \begin{solution}
+        Computing, 
+        \begin{align*}
+            \hat\Corr(X,Y)^2 &= \frac{\hat\Cov(X,Y)^2}{\hat\Var(X)\hat\Var(Y)}\\
+            &= \frac{\frac{1}{n^2}\left(\sum(X_i - \bar X)(Y_i - \bar Y)\right)^2}{\frac{1}{n}\sum (X_i - \bar X)^2 \frac{1}{n}\sum (Y_i  - \bar Y)^2}\\
+            &= \left(\frac{\sum (X_i - \bar X) (Y_i - \bar Y)}{\sum (X_i - \bar X)^2}\right)^2 \frac{\sum (X_i - \bar X)^2}{\sum (Y_i - \bar Y)^2}\\
+            &= \frac{\hat\beta_1^2\sum (X_i - \bar X)^2}{\sum (Y_i - \bar Y)^2}\\
+            &= \frac{\sum (\bar Y - \hat\beta_1 \bar X + \hat\beta_1 X_i - \bar Y)^2}{\sum (Y_i - \bar Y)^2}\\
+            &= \frac{\sum (\hat\beta_0 + \hat\beta_1 X_i - \bar Y)^2}{\sum (Y_i - \bar Y)^2}\\
+            &= \frac{\sum (\hat Y_i - \bar Y)^2}{\sum (Y_i - \bar Y)^2}\\
+            &= R^2
+        \end{align*}
+    \end{solution}
+        \item Show that $R^2$ from the regression $Y$ from $X$ is the same ass the $R^2$ from the regression $X$ from $Y.$
+        \begin{solution}
+            From part (i), we have that 
+            \begin{align*}
+                R^2_{Y \propto X} &= \frac{\hat\Cov(X,Y)^2}{\hat\Var(X)\hat\Var(Y)}\\
+                &= \frac{\hat\Cov(Y,X)^2}{\hat\Var(Y)\hat\Var(X)}\\
+                &= R^2_{X\propto Y}
+            \end{align*}
+        \end{solution}
+        \item Show that $\hat\beta_1 = r_{XY}(\frac{\sigma_Y}{\sigma_X})$
+        \begin{solution}
+            From the work in part (i), we see that \[r^2 = \frac{\hat\beta_1^2 \sum (X_i - \bar X)^2}{\sum (Y_i - \bar Y)^2}  = \frac{\hat\beta_1 \frac{1}{n}\sum (X_i - \bar X)^2}{\frac{1}{n}\sum (Y_i - \bar Y)^2} = \hat\beta_1^2 \frac{\hat\sigma_X^2}{\hat\sigma_Y^2}\] Taking roots of both sides and rearranging yields the result. 
+        \end{solution}
+    \end{enumerate}
+    \item (5.2)
+    Suppose a researcher, using wage data on 250 randomly selected male workers and 280 female workers, estimates the OLS regression
+$$\widehat{\text{Wage}} = 12.52 + 2.12 \times \text{Male}, \quad R^2 = 0.06, \quad SER = 4.2,$$
+$$(0.23) \quad (0.36)$$
+where $\text{Wage}$ is measured in dollars per hour and $\text{Male}$ is a binary variable that is equal to 1 if the person is a male and 0 if the person is a female. Define the wage gender gap as the difference in mean earnings between men and women.
+
+\begin{enumerate}
+    \item What is the estimated gender gap?
+    \begin{solution}
+        $\$2.12$
+    \end{solution}
+    \item Is the estimated gender gap significantly different from 0? (Compute the p-value for testing the null hypothesis that there is no gender gap.)
+    \begin{solution}
+        $H_0: \beta_1 = 0,$ $H_a: \beta_1 \neq 0.$ We have that $\hat\beta_1 = 2.12.$ Statistic is 
+        \[T_{530} = \frac{\hat \beta_1 - \beta_1^{H_0}}{\text{SE}(\hat\beta_1)} = \frac{2.12}{0.36} = 5.89\] We approximate with normal because of the large sample size and get a $p-$value of 
+        \[1-2\Phi(T)\approx 0 \]We reject the null and hell yeah gender gap yeahhhhhh.
+    \end{solution}
+    \item Construct a 95\% confidence interval for the gender gap.
+    \begin{solution}
+        Pretty sure we use $z_{\frac{\alpha}{2}} = 1.96.$ Hence, 
+        \[\bbP\{|T_n| \leq 1.96\} = 0.95 \implies -1.96 \leq \frac{\hat\beta_1 - \beta_1}{\text{SE}(\hat\beta_1)} \leq 1.96\] and so our confidence interval is 
+        \[\left[\hat\beta_1 \pm 1.96 \cdot\text{SE}(\hat\beta_1)\right] = \left[1.41, 2.82\right]\]
+    \end{solution}
+    \item In the sample, what is the mean wage of women? Of men?
+    \begin{solution}
+        We know that $\hat\beta_0 = \bar Y - \hat\beta_1 \bar X$ hence, 
+        \[\bar Y_W = \hat\beta_0 + \hat\beta_1\bar X_W = \hat\beta_0 = \$12.52\] For men, 
+        \[\bar Y_M = \hat\beta_0 + \hat\beta_1 \bar X_M= \$14.64\]
+    \end{solution}
+    \item Another researcher uses these same data but regresses $\text{Wages}$ on $\text{Female}$, a variable that is equal to 1 if the person is female and 0 if the person a male. What are the regression estimates calculated from this regression?
+    \begin{solution}
+        $$\widehat{\text{Wage}} = 14.64 + (-2.12)\times \text{Female}, \quad R^2 = 0.06, \quad SER = 4.2.$$
+    \end{solution}
+\end{enumerate}
+
+\end{enumerate}
+
+\newpage
+\section*{Problem 2}
+
+Prove the following result:
+\[
+\mathbb{E}[X(Y - \mathbb{E}[Y])] = \mathbb{E}[(X - \mathbb{E}[X])Y] = \mathbb{E}[(X - \mathbb{E}[X])(Y - \mathbb{E}[Y])]
+\]
+\begin{solution}
+    We just open up parenthesis:
+    \begin{align*}
+        \bbE[X(Y - \bbE[Y])] &= \bbE[XY - X\bbE[Y]]\\
+        &= \bbE[XY] - \bbE[X]\bbE[Y]
+    \end{align*}
+    We see the first equality now:
+    \begin{align*}
+        \bbE[(X - \bbE[X])Y] &= \bbE[XY- \bbE[X]Y]\\
+        &= \bbE[XY] - \bbE[X]\bbE[Y]
+    \end{align*}
+    For the last equality, we compute
+    \begin{align*}
+        \bbE[(X - \bbE[X])(Y - \bbE[Y])] &= \bbE[XY - \bbE[X]Y - \bbE[Y]X + \bbE[X]\bbE[Y]]\\
+        &= \bbE[XY] - \bbE[X]\bbE[Y] - \bbE[Y]\bbE[X] + \bbE[X]\bbE[Y]\\
+        &= \bbE[XY] - \bbE[X]\bbE[Y]
+    \end{align*}
+\end{solution}
+
+\newpage
+\section*{Problem 3}
+
+Now let’s practice the proof of the expressions for the OLS coefficients \( \hat{\beta}_0 \) and \( \hat{\beta}_1 \) in the simple linear regression case. Assume that
+\[
+Y_i = \beta_0 + \beta_1 X_i + u_i
+\]
+in the population, and that
+\[
+N \hat{\sigma}_x^2 = \sum (X_i - \bar{X})^2 > 0
+\]
+Your data consists of the sequence of observable vectors \( (X_i, Y_i) \) for \( i = 1, \dots, N \), collected as an i.i.d. sample from the joint distribution of \( (X, Y) N\).
+
+\begin{enumerate}[label=(\alph*)]
+    \item State the minimization problem (in the sample).
+    \begin{solution}
+\[\min_{b_0, b_1}\bbE[Y - (b_0 + b_1 X)^2] \implies (\hat{\beta}_0, \hat\beta_1) = \min_{b_0, b_1} \frac{1}{N}\sum_{n=1}^N (Y_i - b_0 - b_1 X_i)^2=: \min_{(b_0, b_1) \in \bbR^2} S(b_0, b_1)\]
+    \end{solution} 
+    \item Derive the two first order conditions (step by step).
+\begin{solution}
+FOC $b_0$
+    \begin{align*}
+        0 &= \frac{\partial S(b_0, b_1)}{\partial b_0} = -\frac{2}{N}\sum_{n=1}^N (Y_i - b_0 - b_1 X_i) \\
+        0 &= \sum_{n=1}^N Y_i - N b_0 - b_1\sum_{n=1}^N X_i\\
+            \end{align*}
+            \begin{align}
+        0 &= \overline{Y} - b_0 - b_1 \overline{X}                
+            \end{align}
+FOC $b_1$   
+    \begin{align*}
+0 &= \frac{\partial S(b_0, b_1)}{\partial b_1} = -\frac{2}{N}\sum_{n=1}^NX_i(Y_i - b_0 - b_1 X_i)\\
+    \end{align*}
+    \begin{align}
+        0&= \overline{XY} - b_0\overline{X} - b_1\overline{X^{(2)}}
+    \end{align}
+\end{solution}
+    \item Solve the f.o.c. of \( \hat{\beta}_0 \) for \( \hat{\beta}_0 \) as a function of the observables and \( \hat{\beta}_1 \).
+\begin{solution}
+Clearly, we rearrange (1) to see that 
+\[\hat{\beta}_0 = \overline{Y} - \hat{\beta}_1 \overline{X}\]
+\end{solution}
+    \item Now plug the expression found in (c) into the f.o.c. of \( \hat{\beta}_1 \) to solve for \( \hat{\beta}_1 \) as a function of (only) observables.
+\begin{solution}
+    We multiply (1) by $\overline{X}$ to find 
+    \[0 = \overline{X}\,\overline{Y} - b_0 \overline{X} - b_1\overline{X}^2\]
+
+    Subtracting this from (2), we find that 
+    \[0 = \overline{XY} - \overline{X}\overline{Y} - b_1 (\overline{X^{(2)} } - \overline{X}^2)\] Thus, we see that 
+    \[b_1 = \frac{\overline{XY} - \overline{X}\,\overline{Y}}{\overline{X^{(2)} } - \overline{X}^2}\] We see that 
+    \[\frac{\sum_{n=1}^N (X_i - \overline{X})(Y_i - \overline{Y})}{\sum_{n=1}^N (X_i - \overline{X})^2} = \frac{\sum_{n=1}^NX_iY_i - \overline{X} \sum Y_i - \overline{Y}\sum X_i + N\overline{X}\,\overline{Y}}{\sum_{n=1}^N (X_i - \overline{X})X_i} = b_1\] as in class. Hence, 
+    \[\hat{\beta}_1 = \frac{\overline{XY} - \overline{X}\,\overline{Y}}{\overline{X^{(2)} } - \overline{X}^2}\]
+\end{solution}
+\end{enumerate}
+
+\textit{Hint: Your final expressions should be}
+\[
+\hat{\beta}_0 = \bar{Y} - \hat{\beta}_1 \bar{X}, \qquad \hat{\beta}_1 = \frac{\sum_{i=1}^N (X_i - \bar{X})(Y_i - \bar{Y})}{\sum_{i=1}^N (X_i - \bar{X})^2}
+\]
+
+\newpage
+\section*{Problem 4}
+
+Suppose that
+\[
+\text{Col GPA} = \beta_0 + \beta_1 \text{PC} + U
+\]
+where \texttt{Col GPA} denotes a student’s college GPA and \texttt{PC} is a binary variable equal to 1 if the student owns a PC and 0 otherwise.
+
+Define \texttt{noPC} as a dummy variable for whether the student does \textbf{not} own a PC, with \texttt{noPC} = 1 if the student does \textbf{not} own a PC and 0 otherwise.
+
+Suppose that:
+\begin{itemize}
+    \item There are 34 students who do not own a PC.
+    \item There are 53 students who do own a PC.
+    \item The sample average of Col GPA for those without a PC is 2.5.
+    \item The sample average of Col GPA for those with a PC is 3.5.
+    \item The sample standard deviation of Col GPA for those without a PC is 0.62.
+    \item The sample variance of Col GPA for those with a PC is 0.47.
+\end{itemize}
+
+\begin{enumerate}[label=(\alph*)]
+    \item Prove that the OLS estimators for \( \beta_0 \) and \( \beta_1 \) are \( \bar{Y}_0 \) and \( \bar{Y}_1 - \bar{Y}_0 \), respectively. (\( \bar{Y}_0 \) and \( \bar{Y}_1 \) are the sample means of the outcome when PC = 0 and PC = 1.)
+\begin{solution}
+    Suppose $\hat\beta_1 = \bar Y_1 - \bar Y_0,$ then 
+    \begin{align*}
+    \hat\beta_0 &= \bar Y - (\bar Y_1 - \bar Y_0)\bar X\\
+    &= \frac{1}{n}\sum Y_i - (\frac{1}{n_1}\sum_{i: X_i = 1}Y_i - \frac{1}{n_0}\sum_{i: X_i = 0}Y_i)\frac{n_1}{n}    \\
+    &= \frac{1}{n} \sum_{i: X_i = 0} Y_i+ \frac{(n-n_0)}{n_0} \frac{1}{n}\sum_{i: X_i = 0}Y_i\\
+    &= \frac{1}{n}\sum_{i: X_i = 0} Y_i + \frac{1}{n_0}\sum_{i: X_i = 0} Y_i - \frac{1}{n}\sum_{i: X_i = 0} Y_i\\
+    &= \bar Y_0
+    \end{align*}
+    Now to prove $\hat\beta_1,$ we see that 
+    \begin{align*}
+\hat{\beta}_1 &= \frac{\sum X_iY_i - \frac{1}{n}\sum X_i \sum Y_i}{\sum (X_i - \bar X)^2}\\
+&= \frac{\sum_{i: X_i = 1} Y_i - \frac{n_1}{n} Y_i}{n_1(1 - \frac{n_1}{n})^2 + n_0(\frac{n_1}{n})^2}\\
+&= \frac{n_1\left(\bar Y_1 - \bar Y\right)}{\frac{n_0n_1}{n}}\\
+&= \frac{n}{n_0}(\bar Y_1 - (\frac{n_1}{n}\bar Y_1 + \frac{n_0}{n}\bar Y_0))\\
+&= \bar Y_1 - \bar Y_0
+    \end{align*}
+    
+\end{solution}
+    \item Test \( H_0 : \beta_1 \leq 0 \) versus \( H_1 : \beta_1 > 0 \) at the 5\% significance level. What is the p-value for this hypothesis test? What do you conclude? \\
+\begin{solution}
+Call 
+\[V = \frac{1}{n}\sum (X_i - \bar X)^2\]
+    We know from class that under the null,
+    \[T = \frac{\hat{\beta}_1}{\hat{\sigma}} \sim N(0,1)\] We know that $n = 83,$ $\hat{\sigma}^2 = \frac{\hat\sigma_0^2}{n_0} + \frac{\hat{\sigma}_1^2 }{n_1}$. Thus, 
+    \[T = 7.042\] yielding a $p-$value of $0.$ We reject the null. 
+\end{solution}
+    \textit{Hint: Use the test of difference of means between groups.}
+    \item Suppose that the researcher instead wishes to do an OLS regression of \texttt{Col GPA} on \texttt{noPC}. What would be the resulting OLS estimates for that regression?
+    \begin{solution}
+        It would be 
+        \[\hat{\texttt{Col GPA}} = 3.5 + (-1)\texttt{No PC}\] and thus 
+        \[\hat\beta_1 = \bar Y_1\] and \[\hat\beta_0 = \bar Y_0 - \bar Y_1\]
+    \end{solution}
+\end{enumerate}
+
+\end{document}

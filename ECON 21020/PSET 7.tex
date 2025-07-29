@@ -1,0 +1,306 @@
+\documentclass[11pt]{article}
+\usepackage{float}
+
+% NOTE: Add in the relevant information to the commands below; or, if you'll be using the same information frequently, add these commands at the top of paolo-pset.tex file. 
+\newcommand{\name}{Agustín Esteva \heart}
+\newcommand{\email}{aesteva@uchicago.edu}
+\newcommand{\classnum}{20210}
+\newcommand{\subject}{Econometrics \heart}
+\newcommand{\instructors}{Murilo Ramos}
+\newcommand{\assignment}{Problem Set 4}
+\newcommand{\semester}{Summer 2025}
+\newcommand{\duedate}{\today}
+\newcommand{\bA}{\mathbf{A}}
+\newcommand{\bB}{\mathbf{B}}
+\newcommand{\bC}{\mathbf{C}}
+\newcommand{\bD}{\mathbf{D}}
+\newcommand{\bE}{\mathbf{E}}
+\newcommand{\bF}{\mathbf{F}}
+\newcommand{\bG}{\mathbf{G}}
+\newcommand{\bH}{\mathbf{H}}
+\newcommand{\bI}{\mathbf{I}}
+\newcommand{\bJ}{\mathbf{J}}
+\newcommand{\bK}{\mathbf{K}}
+\newcommand{\bL}{\mathbf{L}}
+\newcommand{\bM}{\mathbf{M}}
+\newcommand{\bN}{\mathbf{N}}
+\newcommand{\bO}{\mathbf{O}}
+\newcommand{\bP}{\mathbf{P}}
+\newcommand{\bQ}{\mathbf{Q}}
+\newcommand{\bR}{\mathbf{R}}
+\newcommand{\bS}{\mathbf{S}}
+\newcommand{\bT}{\mathbf{T}}
+\newcommand{\bU}{\mathbf{U}}
+\newcommand{\bV}{\mathbf{V}}
+\newcommand{\bW}{\mathbf{W}}
+\newcommand{\bX}{\mathbf{X}}
+\newcommand{\bY}{\mathbf{Y}}
+\newcommand{\bZ}{\mathbf{Z}}
+\newcommand{\Vol}{\text{Vol}}
+\newcommand{\MSE}{\text{MSE}}
+\newcommand{\Bias}{\text{Bias}}
+\newcommand{\Var}{\text{Var}}
+\newcommand{\Cov}{\text{Cov}}
+\newcommand{\Corr}{\text{Corr}}
+
+
+
+%% blackboard bold math capitals
+\newcommand{\bbA}{\mathbb{A}}
+\newcommand{\bbB}{\mathbb{B}}
+\newcommand{\bbC}{\mathbb{C}}
+\newcommand{\bbD}{\mathbb{D}}
+\newcommand{\bbE}{\mathbb{E}}
+\newcommand{\bbF}{\mathbb{F}}
+\newcommand{\bbG}{\mathbb{G}}
+\newcommand{\bbH}{\mathbb{H}}
+\newcommand{\bbI}{\mathbb{I}}
+\newcommand{\bbJ}{\mathbb{J}}
+\newcommand{\bbK}{\mathbb{K}}
+\newcommand{\bbL}{\mathbb{L}}
+\newcommand{\bbM}{\mathbb{M}}
+\newcommand{\bbN}{\mathbb{N}}
+\newcommand{\bbO}{\mathbb{O}}
+\newcommand{\bbP}{\mathbb{P}}
+\newcommand{\bbQ}{\mathbb{Q}}
+\newcommand{\bbR}{\mathbb{R}}
+\newcommand{\bbS}{\mathbb{S}}
+\newcommand{\bbT}{\mathbb{T}}
+\newcommand{\bbU}{\mathbb{U}}
+\newcommand{\bbV}{\mathbb{V}}
+\newcommand{\bbW}{\mathbb{W}}
+\newcommand{\bbX}{\mathbb{X}}
+\newcommand{\bbY}{\mathbb{Y}}
+\newcommand{\bbZ}{\mathbb{Z}}
+
+%% script math capitals
+\newcommand{\sA}{\mathscr{A}}
+\newcommand{\sB}{\mathscr{B}}
+\newcommand{\sC}{\mathscr{C}}
+\newcommand{\sD}{\mathscr{D}}
+\newcommand{\sE}{\mathscr{E}}
+\newcommand{\sF}{\mathscr{F}}
+\newcommand{\sG}{\mathscr{G}}
+\newcommand{\sH}{\mathscr{H}}
+\newcommand{\sI}{\mathscr{I}}
+\newcommand{\sJ}{\mathscr{J}}
+\newcommand{\sK}{\mathscr{K}}
+\newcommand{\sL}{\mathscr{L}}
+\newcommand{\sM}{\mathscr{M}}
+\newcommand{\sN}{\mathscr{N}}
+\newcommand{\sO}{\mathscr{O}}
+\newcommand{\sP}{\mathscr{P}}
+\newcommand{\sQ}{\mathscr{Q}}
+\newcommand{\sR}{\mathscr{R}}
+\newcommand{\sS}{\mathscr{S}}
+\newcommand{\sT}{\mathscr{T}}
+\newcommand{\sU}{\mathscr{U}}
+\newcommand{\sV}{\mathscr{V}}
+\newcommand{\sW}{\mathscr{W}}
+\newcommand{\sX}{\mathscr{X}}
+\newcommand{\sY}{\mathscr{Y}}
+\newcommand{\sZ}{\mathscr{Z}}
+
+
+\renewcommand{\emptyset}{\O}
+
+\newcommand{\abs}[1]{\lvert #1 \rvert}
+\newcommand{\norm}[1]{\lVert #1 \rVert}
+\newcommand{\sm}{\setminus}
+
+
+
+\newcommand{\sarr}{\rightarrow}
+\newcommand{\arr}{\longrightarrow}
+
+% NOTE: Defining collaborators is optional; to not list collaborators, comment out the line below.
+%\newcommand{\collaborators}{Alyssa P. Hacker (\texttt{aphacker}), Ben Bitdiddle (\texttt{bitdiddle})}
+
+\input{paolo-pset.tex}
+
+% NOTE: To compile a version of this pset without problems, solutions, or reflections, uncomment the relevant line below.
+
+%\excludeversion{problem}
+%\excludeversion{solution}
+%\excludeversion{reflection}
+
+\begin{document}	
+
+	% Use the \psetheader command at the beginning of a pset. 
+	\psetheader
+\section*{Problem 1}
+
+\section*{Problem 1}
+Stock and Watson, Exercises 12.4, 12.5, 12.8, 12.9, *E12.1
+\begin{enumerate}
+    \item (12.4) Consider TSLS estimation with a single included endogenous variable and a single instrument. Then the predicted value from the first-stage regression is 
+\[
+\hat{X}_i = \hat{\pi}_0 + \hat{\pi}_1 Z_i.
+\]
+Use the definition of the sample variance and covariance to show that 
+\[
+s_{\hat{X}Y} = \hat{\pi}_1 s_{ZY} \quad \text{and} \quad s_{\hat{X}}^2 = \hat{\pi}_1^2 s_Z^2.
+\]
+Use this result to fill in the steps of the derivation of Equation (12.4) in Appendix 12.2.
+\begin{solution}
+    We see that 
+    \begin{align*}
+        s_{\hat X Y} &= \frac{1}{n}\sum (\hat X_i - \bar{\hat X})(Y_i - \bar Y)\\
+        &=\frac{1}{n}\sum \hat X_i(Y_i - \bar Y)\\
+        &= \frac{1}{n}\sum (\hat \pi_0 + \hat \pi_1 Z_i)(Y_i - \bar Y)\\
+        &= \hat\pi_0\frac{1}{n}\sum (Y_i - \bar Y) + \hat\pi_1 \frac{1}{n}\sum Z_i(Y_i - \bar Y)\\
+        &= \hat\pi_1\frac{1}{n}\sum (Z_i - \bar Z)(Y_i - \bar Y)\\
+        &= \hat\pi_1 s_{ZY}
+    \end{align*} and
+    \begin{align*}
+        s^2_{\hat X} &= \frac{1}{n}\sum (\hat X_i - \bar{\hat X})^2\\
+        &= \frac{1}{n}\sum (\hat X_i - \bar{\hat X})\hat X_i\\
+        &= \frac{1}{n}\sum (\pi_0 + \hat \pi_1 Z_i - \frac{1}{n}\sum (\hat \pi_0 + \hat \pi_1 Z_i))(\hat \pi_0 + \hat \pi_1 Z_i)\\
+        &= \frac{1}{n}\sum (\hat \pi_1 Z_i - \hat \pi_1 \bar Z_i)(\hat \pi_0 + \hat \pi_1 Z_i)\\
+        &= \frac{1}{n}\sum (\hat \pi_1 Z_i - \hat \pi_1 \bar Z_i)^2\\
+        &= \hat\pi_1^2 \frac{1}{n}\sum (Z_i - \bar Z)^2\\
+        &= (\hat \pi_1)^2 s^2_Z
+    \end{align*}
+    To see that $\hat \beta_1^{2SLS} = \hat\beta_1^{IV},$
+    \begin{align*}
+        \hat \beta_1^{2SLS} &= \frac{s_{\hat X Y}}{s^2_{\hat X}}\\
+        &= \frac{\hat\pi_1 s_{ZY}}{(\hat \pi_1)^2 s^2_Z}\\
+        &= \frac{s_{ZY}}{\hat \pi_1 s^2_Z}
+    \end{align*}
+    Hence, it suffice to show that the denominator is $s^2_{ZX}:$
+    \begin{align*}
+        \hat\pi_1s^2_Z &=\frac{s_{ZX}}{s^2_{Z}}s^2_Z = s_{ZX}
+    \end{align*}
+\end{solution}
+\item Consider the IV regression model
+\[
+Y_i = \beta_0 + \beta_1 X_i + \beta_2 W_i + u_i,
+\]
+where \( X_i \) is correlated with \( u_i \), and \( Z_i \) is an instrument. Suppose that the first three assumptions in Key Concept 12.4 are satisfied. Which IV assumption is \textbf{not} satisfied when
+
+\begin{enumerate}[label=\textbf{\alph*.}]
+    \item \( Z_i \) is independent of \( (Y_i, X_i, W_i) \)?
+    \begin{solution}
+        Relevance
+    \end{solution}
+    \item \( Z_i = W_i \)?
+    \begin{solution}
+        $Z$ cannot affect $Y$ thru anything other than $X.$
+    \end{solution}
+    \item \( W_i = 1 \) for all \( i \)?
+    \begin{solution}
+        Co-linearity
+    \end{solution}
+    \item \( Z_i = X_i \)?
+    \begin{solution}
+        Exogeneity
+    \end{solution}
+\end{enumerate}
+\item Consider a product market with a supply function \( Q_i^s = \beta_0 + \beta_1 P_i + u_i^s \),  
+a demand function \( Q_i^d = \gamma_0 + u_i^d \), and a market equilibrium condition \( Q_i^s = Q_i^d \), where \( u_i^s \) and \( u_i^d \) are mutually independent i.i.d. random variables, both with a mean of 0.  
+
+\begin{enumerate}
+    \item Show that \( P_i \) and \( u_i^s \) are correlated.
+    \begin{solution}
+        \begin{align*}
+            \Cov(P, u^s) &= \Cov(\frac{1}{\beta_1}(\gamma_0 + u^d - \beta_0 - u^s), u^s)\\
+            &= \frac{1}{\beta_1}\Cov(u^d - u^s, u^s)\\
+            &= -\frac{1}{\beta_1}\Var(u^s)\\
+            &\neq 0
+        \end{align*}
+    \end{solution}
+    \item Show that the OLS estimator of \( \beta_1 \) is inconsistent.
+    \begin{solution}
+        We know that 
+        \[\hat\beta_1 = \beta_1 + \frac{\sum (P_i - \bar P)u_i^s}{\sum (P_i - \bar P)}\xrightarrow[\bbP]{}\beta_1 +\frac{\Cov(P, u^s)}{\Var(P)}\] yikes! We showed in (i) that the right term isn't zero.
+    \end{solution}
+    \item How would you estimate \( \beta_0, \beta_1 \), and \( \gamma_0 \)?
+    \begin{solution}
+        With instrument variables! Introduce a supply shifter.
+    \end{solution}
+\end{enumerate}
+\item A researcher is interested in the effect of military service on human capital.  
+He collects data from a random sample of 4000 workers aged 40 and runs the OLS regression \( Y_i = \beta_0 + \beta_1 X_i + u_i \), where \( Y_i \) is a worker’s annual earnings and \( X_i \) is a binary variable that is equal to 1 if the person served in the military and is equal to 0 otherwise.
+
+\begin{enumerate}
+    \item Explain why the OLS estimates are likely to be unreliable. (Hint: Which variables are omitted from the regression? Are they correlated with military service?)
+    \begin{solution}
+        There might be something like education thrown into the mix of $U$ that is omitted, and since someone with military experience might be less likely to attend higher education, they are definitely correlated. 
+    \end{solution}
+    \item During the Vietnam War, there was a draft in which priority for the draft was determined by a national lottery. (The days of the year were randomly reordered 1 through 365. Those with birth dates ordered first were drafted before those with birth dates ordered second, and so forth.)  
+    Explain how the lottery might be used as an instrument to estimate the effect of military service on earnings. (For more about this issue, see Joshua D. Angrist (1990).)
+    \begin{solution}
+        The lottery, $Z,$ can be used because it directly affects $Z$ (relevance) and it is exogenous to $U.$ 
+    \end{solution}
+\end{enumerate}
+\end{enumerate}
+
+\newpage
+\section*{Problem 2}
+Suppose the first stage regression model:
+\[
+X = \pi_0 + \pi_1 Z_1 + \pi_2 Z_2 + \pi_3 W + V
+\]
+where \( X \) is an endogenous variable, \( Z_1 \) and \( Z_2 \) are instruments, and \( W \) is an exogenous control. The reported \( R^2 \) of this regression is 0.8 and the sample size is 100.
+
+Also, consider the model:
+\[
+X = \pi_0 + \pi_3 W + V
+\]
+where the variables are defined as in the previous model, assuming \( \pi_1 \) and \( \pi_2 \) equal to zero. The reported \( R^2 \) is 0.79 and the sample size is 100.
+
+\begin{enumerate}[(a)]
+    \item Test at the 5\% significance level the joint hypothesis that \( \pi_1 = \pi_2 = 0 \). You can find the critical value using the F-table. If the desired degrees of freedom do not appear in the table, use the closest values.
+    \begin{solution}
+        Yes Sir! 
+        \[F = \frac{\frac{1}{q}(R^2_{ur} - R^2_r)}{\frac{1}{n-K_{ur} - 1}(1 - R^2_{ur})} = \frac{\frac{1}{2}(0.01)}{\frac{1}{100-4 - 1}(0.2)} = 2.375\] this implies a critical value of about $3.07$
+    \end{solution}
+    \item Test whether the instruments are weak using the rule of thumb.
+    \begin{solution}
+        $2.375 < 10,$ thus WEAK
+    \end{solution}
+    \item Discuss why weak instruments are problematic.
+    \begin{solution}
+        Because $SE(\hat\beta)$ blows tf up and you can't do any good asymptotic results. 
+    \end{solution}
+\end{enumerate}
+
+\newpage
+\section*{Problem 3}
+Describe the fundamental problem of causal inference.
+\begin{solution}
+    Ok, so imagine you're me and I'm me. There's two me! Sounds like a fundamental problem. I can just kill myself now. 
+\end{solution}
+
+\newpage
+\section*{Problem 4}
+Consider the following expressions:
+\[
+E[Y | D = 1] - E[Y | D = 0] = ATT + \left(E[Y_0 | D = 1] - E[Y_0 | D = 0]\right)
+\]
+\[
+E[Y | D = 1] - E[Y | D = 0] = ATU + \left(E[Y_1 | D = 1] - E[Y_1 | D = 0]\right)
+\]
+\[
+ATE = \Pr(D = 1) \cdot ATT + \Pr(D = 0) \cdot ATU
+\]
+
+Discuss the necessary conditions such that the naive estimator \( E[Y | D = 1] - E[Y | D = 0] \) coincides with the ATT, ATU, and ATE.
+\begin{solution}
+    In an experiment with randomization such that $y_0^i, y_1^i \perp D^i,$ we see that 
+    \[SB_0 = \bbE[y^i_0 \mid D_i = 1] - \bbE[y^i_0 \mid D_i = 0] = \bbE[y_0^i] - \bbE[y_0^i] = 0\] and same for $SB_1.$
+
+    Moreover, 
+    \begin{align*}
+    ATE &= \bbE[y_1^i - y_0^i]\\
+    &= \bbE[\bbE[y_1^i - y_0^i \mid D^i]]\\
+    &= p (ATT) + (1-p)(ATU)\\
+    &= p(\theta - SB_0)  + (1-p)(\theta - SB_1)\\
+    &= \theta
+\end{align*}
+Thus, in a randomized experiment, 
+\boxed{ATT = ATU= ATE = \theta}
+\end{solution}
+
+
+\end{document}

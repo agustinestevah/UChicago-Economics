@@ -1,0 +1,373 @@
+\documentclass[11pt]{article}
+
+% NOTE: Add in the relevant information to the commands below; or, if you'll be using the same information frequently, add these commands at the top of paolo-pset.tex file. 
+\newcommand{\name}{Agustín Esteva}
+\newcommand{\email}{aesteva@uchicago.edu}
+\newcommand{\classnum}{20210}
+\newcommand{\subject}{Econometric}
+\newcommand{\instructors}{Murilo Ramos}
+\newcommand{\assignment}{Problem Set 1}
+\newcommand{\semester}{Summer 2025}
+\newcommand{\duedate}{\today}
+\newcommand{\bA}{\mathbf{A}}
+\newcommand{\bB}{\mathbf{B}}
+\newcommand{\bC}{\mathbf{C}}
+\newcommand{\bD}{\mathbf{D}}
+\newcommand{\bE}{\mathbf{E}}
+\newcommand{\bF}{\mathbf{F}}
+\newcommand{\bG}{\mathbf{G}}
+\newcommand{\bH}{\mathbf{H}}
+\newcommand{\bI}{\mathbf{I}}
+\newcommand{\bJ}{\mathbf{J}}
+\newcommand{\bK}{\mathbf{K}}
+\newcommand{\bL}{\mathbf{L}}
+\newcommand{\bM}{\mathbf{M}}
+\newcommand{\bN}{\mathbf{N}}
+\newcommand{\bO}{\mathbf{O}}
+\newcommand{\bP}{\mathbf{P}}
+\newcommand{\bQ}{\mathbf{Q}}
+\newcommand{\bR}{\mathbf{R}}
+\newcommand{\bS}{\mathbf{S}}
+\newcommand{\bT}{\mathbf{T}}
+\newcommand{\bU}{\mathbf{U}}
+\newcommand{\bV}{\mathbf{V}}
+\newcommand{\bW}{\mathbf{W}}
+\newcommand{\bX}{\mathbf{X}}
+\newcommand{\bY}{\mathbf{Y}}
+\newcommand{\bZ}{\mathbf{Z}}
+\newcommand{\Vol}{\text{Vol}}
+\newcommand{\MSE}{\text{MSE}}
+\newcommand{\Bias}{\text{Bias}}
+\newcommand{\Var}{\text{Var}}
+\newcommand{\Cov}{\text{Cov}}
+\newcommand{\Corr}{\text{Corr}}
+
+
+
+%% blackboard bold math capitals
+\newcommand{\bbA}{\mathbb{A}}
+\newcommand{\bbB}{\mathbb{B}}
+\newcommand{\bbC}{\mathbb{C}}
+\newcommand{\bbD}{\mathbb{D}}
+\newcommand{\bbE}{\mathbb{E}}
+\newcommand{\bbF}{\mathbb{F}}
+\newcommand{\bbG}{\mathbb{G}}
+\newcommand{\bbH}{\mathbb{H}}
+\newcommand{\bbI}{\mathbb{I}}
+\newcommand{\bbJ}{\mathbb{J}}
+\newcommand{\bbK}{\mathbb{K}}
+\newcommand{\bbL}{\mathbb{L}}
+\newcommand{\bbM}{\mathbb{M}}
+\newcommand{\bbN}{\mathbb{N}}
+\newcommand{\bbO}{\mathbb{O}}
+\newcommand{\bbP}{\mathbb{P}}
+\newcommand{\bbQ}{\mathbb{Q}}
+\newcommand{\bbR}{\mathbb{R}}
+\newcommand{\bbS}{\mathbb{S}}
+\newcommand{\bbT}{\mathbb{T}}
+\newcommand{\bbU}{\mathbb{U}}
+\newcommand{\bbV}{\mathbb{V}}
+\newcommand{\bbW}{\mathbb{W}}
+\newcommand{\bbX}{\mathbb{X}}
+\newcommand{\bbY}{\mathbb{Y}}
+\newcommand{\bbZ}{\mathbb{Z}}
+
+%% script math capitals
+\newcommand{\sA}{\mathscr{A}}
+\newcommand{\sB}{\mathscr{B}}
+\newcommand{\sC}{\mathscr{C}}
+\newcommand{\sD}{\mathscr{D}}
+\newcommand{\sE}{\mathscr{E}}
+\newcommand{\sF}{\mathscr{F}}
+\newcommand{\sG}{\mathscr{G}}
+\newcommand{\sH}{\mathscr{H}}
+\newcommand{\sI}{\mathscr{I}}
+\newcommand{\sJ}{\mathscr{J}}
+\newcommand{\sK}{\mathscr{K}}
+\newcommand{\sL}{\mathscr{L}}
+\newcommand{\sM}{\mathscr{M}}
+\newcommand{\sN}{\mathscr{N}}
+\newcommand{\sO}{\mathscr{O}}
+\newcommand{\sP}{\mathscr{P}}
+\newcommand{\sQ}{\mathscr{Q}}
+\newcommand{\sR}{\mathscr{R}}
+\newcommand{\sS}{\mathscr{S}}
+\newcommand{\sT}{\mathscr{T}}
+\newcommand{\sU}{\mathscr{U}}
+\newcommand{\sV}{\mathscr{V}}
+\newcommand{\sW}{\mathscr{W}}
+\newcommand{\sX}{\mathscr{X}}
+\newcommand{\sY}{\mathscr{Y}}
+\newcommand{\sZ}{\mathscr{Z}}
+
+
+\renewcommand{\emptyset}{\O}
+
+\newcommand{\abs}[1]{\lvert #1 \rvert}
+\newcommand{\norm}[1]{\lVert #1 \rVert}
+\newcommand{\sm}{\setminus}
+
+
+\newcommand{\sarr}{\rightarrow}
+\newcommand{\arr}{\longrightarrow}
+
+% NOTE: Defining collaborators is optional; to not list collaborators, comment out the line below.
+%\newcommand{\collaborators}{Alyssa P. Hacker (\texttt{aphacker}), Ben Bitdiddle (\texttt{bitdiddle})}
+
+\input{paolo-pset.tex}
+
+% NOTE: To compile a version of this pset without problems, solutions, or reflections, uncomment the relevant line below.
+
+%\excludeversion{problem}
+%\excludeversion{solution}
+%\excludeversion{reflection}
+
+\begin{document}	
+	
+	% Use the \psetheader command at the beginning of a pset. 
+	\psetheader
+
+\section*{Problem 1.1}
+Let \( Y \) be a Bernoulli random variable with success probability \( \Pr(Y = 1) = p \), and let \( Y_1, \dots, Y_n \) be i.i.d. draws from this distribution. Let \( \hat{p} \) be the fraction of successes (1s) in the sample.
+
+\begin{enumerate}[label=(\alph*)]
+    \item Show that \( \hat{p} = \overline{Y} \).
+\begin{solution}
+    By definition, 
+    \[\hat{p} = \frac{\sum_{i=1}^n \mathbbm{1}\{Y_i = 1\}}{n} = \frac{\sum_{i=1}^n Y_i}{n} = \overline{Y}\]
+\end{solution}
+    \item Show that \( \hat{p} \) is an unbiased estimator of \( p \).
+    \begin{solution}
+        \[\bbE[\hat{p}] - p = \frac{1}{n}\sum\bbE[Y] - p = \frac{n}{n} p - p = 0\]
+    \end{solution}
+    \item Show that \( \operatorname{Var}(\hat{p}) = \dfrac{p(1 - p)}{n} \).
+    \begin{solution}
+        \[\Var(\hat{p}) = \Var(\frac{1}{n}\sum \Var[Y_i]) = \frac{1}{n^2}n\Var[Y] = \frac{p(1-p)}{n}\]
+    \end{solution}
+\end{enumerate}
+
+\section*{Problem 1.2}
+
+Now suppose a survey of 400 likely voters finds that 215 support the incumbent and 185 support the challenger. Let \( p \) denote the fraction of all likely voters who support the incumbent, and let \( \hat{p} \) be the sample proportion supporting the incumbent.
+
+
+\begin{enumerate}[label=(\alph*)]
+    \item Use the survey data to estimate \( p \).
+    \begin{solution}
+    Lett $Y_i$ be one for support and zero for not, we estimate
+        \[\hat{p} = \frac{215}{400} = 0.5375\]
+    \end{solution}
+    \item Use the plug-in estimator of the variance of \( \hat{p} \), namely \( \dfrac{\hat{p}(1 - \hat{p})}{n} \), to compute the standard error.
+    \begin{solution}
+        \[\hat\sigma_Y = \sqrt{\frac{\frac{215}{400}\frac{185}{400}}{400}} =0.02494 \]
+    \end{solution}
+    \item What is the \emph{p}-value for testing \( H_0: p = 0.5 \) vs. \( H_1: p \ne 0.5 \)?
+    \begin{solution}
+        Using CLT, we have that 
+        \[\frac{\sqrt{n}(\hat p - \mu_Y)}{\sigma_Y} \to N(0,1) \]
+        Thus, under the null,
+        \[p = 2\Phi\{\frac{\sqrt{400}(0.5375 - \frac{1}{2})}{0.025}\} = 2\Phi(-1,5) = 0.1336\]
+    \end{solution}
+    \item What is the \emph{p}-value for testing \( H_0: p = 0.5 \) vs. \( H_1: p > 0.5 \)?
+    \begin{solution}
+        \[p = \frac{0.1336}{2} = 0.0668\]
+    \end{solution}
+    \item Explain why the results of parts (c) and (d) differ.
+    \begin{solution}
+        Because we in part (d) we are just worried about one possible source of error, and is thus the chance of rejecting the null is half as small.
+    \end{solution}
+    \item Based on the results above, does the survey provide statistically significant evidence (at the 5\% level) that the incumbent was ahead?
+    \begin{solution}
+        No. 
+    \end{solution}
+\end{enumerate}
+
+\section*{Problem 1.3}
+
+Using the same data:
+
+\begin{enumerate}[label=(\alph*)]
+    \item Construct a 95\% confidence interval for \( p \).
+\begin{solution}
+Letting $\alpha = 0.05,$ we consider that we want 
+\[\bbP\{\left|\frac{\sqrt{n}(\hat{p} - \mu_Y)}{\hat{\sigma}_Y}\right| \leq z_{\frac{\alpha}{2}}\} = 0.95\] by the CLT we have this is equivalent to finding
+\[\left|\frac{\sqrt{n}(\hat{p} - \mu_Y)}{\hat{\sigma}_Y}\right| \leq 1.96.\] Rearranging, we find our confidence interval to be 
+\[\mu_Y \in [\hat{p}\pm 1.96\frac{\hat{\sigma_Y}}{\sqrt{400}}] = [0.488, 0.586]\]
+\end{solution}
+
+    \item Construct a 99\% confidence interval for \( p \).
+\begin{solution}
+    Using now $z_{\frac{\alpha}{2}} = 2.56,$ we find that 
+    \[\mu_y \in [0.4732, 0.6018]\]
+\end{solution}
+    \item Why is the interval in part (b) wider than the interval in part (a)?
+\begin{solution}
+    Because in order to be more confident about where the true value lies, we need to expand the `net' we are trying to catch it with.
+\end{solution}
+    \item Without recalculating, use your results to test the hypothesis
+    \[
+    H_0: p = 0.50 \quad \text{vs.} \quad H_1: p \ne 0.50
+    \]
+    at the 5\% significance level.
+    \begin{solution}
+        Using the $95\%$ confidence interval, we see that we are $95\%$ confident that the true mean is wiith in $[0.488, 0.586]$, and since $0.5$ is in there, then we fail to reject the null.
+    \end{solution}
+\end{enumerate}
+
+\newpage
+\section*{Problem 2}
+Let \( X_1, \ldots, X_n \) be i.i.d. \( \sim X \). Consider the estimator
+\[
+\hat{\theta}_n = \sum_{i=1}^n a_i X_i
+\]
+for some constants \( a_1, \ldots, a_n \).
+
+\begin{enumerate}
+    \item[(a)] Show that if \( \hat{\theta}_n \) is an unbiased estimator of \( \mathbb{E}[X] \), then \( \sum_{i=1}^n a_i = 1 \).
+\begin{solution}
+Suppose $\hat{\theta}_n$ is an unbiased estimator of $\mu.$ Then 
+\begin{align*}
+    0&= \bbE[\hat{\theta}_n] - \mu\\
+    &= \bbE[\sum a_i X_i]- \mu\\
+    &= \sum a_i \bbE[X_i] - \mu\\
+    &= \mu \sum a_i  - \mu
+\end{align*}
+which is true iff $\sum a_i = 1.$
+\end{solution}
+    \item[(b)] Show that \( \text{Var}[\hat{\theta}_n] = \text{Var}[X] \sum_{i=1}^n a_i^2 \).
+\begin{solution}
+    Computing, 
+    \begin{align*}
+        \Var(\hat{\theta}_n) &= \Var(\sum a_i X_i)\\
+        &= \sum a_i^2 \Var(X_i)\\
+        &=  \sum a_i^2 \Var(X)\\
+        &= \Var(X) \sum a_i^2
+    \end{align*}
+\end{solution}
+    \item[(c)] Find \( a_1, \ldots, a_n \) that minimize \( \text{Var}[\hat{\theta}_n] \) subject to the constraint that \( \hat{\theta}_n \) is an unbiased estimator of \( \mathbb{E}[X] \).
+    \begin{solution}
+        Noting that $\sum a_i = 1,$ we seek $\min_{a_1, \dots, a_n} \sum_{i=1}^n a_i^2.$ We claim that $a_i = \frac{1}{n}$ for all $i$ minimizes this. To see this, we can  solve using a Lagrangian: 
+        \[\mathcal{L}(a_1, \dots, a_n, \lambda) = \sum a_i^2 - \lambda(\sum a_i - 1)\]
+        \[\frac{\partial \cal L}{\partial a_j} = 2a_j - \lambda = 0  \implies a_j = \frac{\lambda}{2} \] With the boundary condition we find that 
+        \[\sum a_i = 1 \implies \sum \frac{\lambda}{2} = 1 \iff \frac{\lambda n}{2} = 1 \iff \lambda = \frac{2}{n}\] Hence, $a_i = \frac{1}{n}$ for all $i.$ 
+    \end{solution}
+\end{enumerate}
+
+\newpage
+\section*{Problem 3}
+Let \( X_1, \ldots, X_n \) be i.i.d. \( \sim X \). Suppose \( \text{Var}[X] < \infty \). For \( 1 \leq i \leq n \), define \( Z_i = a + bX_i \) and \( Z = a + bX \) for some constants \( a \) and \( b \).
+
+\begin{enumerate}
+    \item[(a)] Show that \( \bar{Z}_n = a + b \bar{X}_n \) and \( \hat{\sigma}_Z^2 = b^2 \hat{\sigma}_X^2 \).
+\begin{solution}
+Computing, 
+\[\overline{Z}_n = \frac{1}{n}(\sum_{i=1}^n Z_i) = \frac{1}{n}(\sum_{i=1}^n a + bX_i)=  \frac{n}{n}a + \frac{b}{n}\sum X_i = a + b \overline{X}_n \]
+We calculate the variance to be 
+\[\Var(Z) = \Var(a + bX) = \Var(bX) = b^2 \Var(X)\]
+\end{solution}
+    \item[(b)] Prove that \( \bar{Z}_n \) is an unbiased estimator of \( \mathbb{E}[Z] \).
+\begin{solution}
+    We simply compute 
+\begin{align*}
+    \bbE[\overline{Z}_n] - \bbE[Z] &= \bbE[\frac{1}{n} \sum Z_i] - \bbE[Z]\\
+    &= \frac{1}{n} \sum \bbE[Z_i] - \bbE[Z]\\
+    &= \frac{1}{n}\sum \bbE[{Z}] - \bbE[Z]\\
+    &= \frac{n}{n}\bbE[Z] - \bbE[Z]\\
+    &= 0
+\end{align*}
+\end{solution}
+    \item[(c)] Prove that \( \bar{Z}_n \) is a consistent estimator of \( \mathbb{E}[Z] \). (Hint: Is the function \( g(t) = a + bt \) continuous?)
+    \begin{solution}
+Since $\Var(X) < \infty,$ we have that $\bbE[X^2] < \infty$ since $\Var(X) = \bbE[X^2] - \bbE[X]^2.$ Thus, we apply the weak law of large numbers to find that $\bar{X}_n \to \bbE[X]$ in probability. Since $g(t) = a + bt$ is continuous, we apply the continuous mapping theorem to see that $g(\overline{X}_n) \to g(\bbE[X])$ in probability. In other words, 
+\[a + b \overline{X}_n \to a + b \bbE[X] = \bbE[Z] \] which by part (a) implies then that 
+\[\overline{Z_n} \to \bbE[Z]\] in probability, and thus we are done.
+    \end{solution}
+\end{enumerate}
+
+\newpage
+\section*{Problem 4}
+Let \( X_1, \ldots, X_n \) be i.i.d. \( \sim X \), where \( X \) is the SAT score of a high school senior in Chicago. A researcher is interested in \( \theta \), the fraction of high school seniors in Chicago with an SAT score higher than 1200.
+
+\begin{enumerate}
+    \item[(a)] Write \( \theta \) as the expected value of a suitable random variable.
+\begin{solution}
+    We note that this fraction we are interested in is the same as
+    \[\theta = \bbP\{X >1200\}  = \bbE[\mathbbm{1}\{X>1200\}]\]
+\end{solution}
+    \item[(b)] Propose an estimator \( \hat{\theta}_n \) of \( \theta \) that is unbiased and consistent. Prove unbiased ness and consistency.
+    \begin{solution}
+        Using the analogy principle, we propose 
+        \[\hat{\theta}_n = \frac{1}{n} \sum_{i=1}^n \mathbbm{1}\{X_i >1200\}\] TO show (un)bias:
+        \begin{align*}
+            \bbE[\hat{\theta}_n] - \theta &= \bbE[\frac{1}{n} \sum_{i=1}^n \mathbbm{1}\{X_i >1200\}] - \theta\\
+            &= \frac{1}{n} \sum_{i=1}^n \bbE[\mathbbm{1}\{X_i > 1200\}] - \theta\\
+            &= \frac{1}{n}\sum_{i-1} \bbP\{X > 1200\} - \theta\\
+            &= \bbP\{X >1200\} - \theta\\
+            &= 0
+        \end{align*} by definition of $\theta$. To show that $\hat{\theta}_n$ is consistent, we use the weak law of large numbers. We claim that $\bbE[\theta^2] < \infty.$ This is obvious since $\theta \leq 1$ almost surely since it is a probability, and thus $\bbE[\theta^2] \leq 1^2$ almost surely. Thus, we apply the law of large numbers to the i.i.d. r.v.s of $\mathbbm{1}\{X_1>1200\}, \dots \mathbbm{1}\{X_n >1200\}\sim \mathbbm{1}\{X >1200\}$ and find that
+        \[\frac{1}{n}\sum_{i=1}^n \mathbb{1}\{X_i >1200\} \to \bbE[X >1200] = \bbP\{X >1200\} = p\] where the convergence is in probability. 
+    \end{solution}
+    \item[(c)] What is \( \text{Var}[\hat{\theta}_n] \)?
+\begin{solution}
+    We just compute bro
+    \begin{align*}
+        \Var(\hat{\theta}_n) &= \Var(\frac{1}{n} \sum_{i=1}^n \mathbbm{1}\{X_i >1200\})\\
+        &= \frac{1}{n^2}\sum_{i=1}^n \Var(\mathbbm{1}\{X_i >1200\})\\
+        &= \frac{\bbE[\mathbbm{1}\{X_i >1200\}^2] - (\bbP\{X >1200\})^2}{n}\\
+        &= \frac{\bbP\{X >1200\}(1 - \bbP\{X >1200 \})}{n}\\
+        &= \frac{\theta(1 - \theta)}{n}
+    \end{align*}
+\end{solution}
+    \item[(d)] Propose a consistent estimator for \( n \cdot \text{Var}[\hat{\theta}_n] \). Justify your answer.
+\begin{solution}
+    We propose 
+    \[\hat{\sigma}_n^2 = \hat{\theta}_n(1 - \hat{\theta}_n).\] To show $\hat{\theta}_n$ is consistent, we note that by part b $\hat{\theta}_n \to \theta$ in probability. Letting $g(t) = t(1 - t)$ be the continuous function, we use the continuous mapping theorem and part (c) to say that 
+    \[g(\hat{\theta}_n) \to g(\theta) \implies \hat{\theta}_n(1-\hat{\theta}_n) \to \theta(1-\theta) \iff \hat{\sigma}_n^2 \to n\Var(\hat{\theta}_n)\]
+\end{solution}
+    \item[(e)] A researcher wishes to test the null hypothesis that at least \( \frac{1}{4} \) of high school seniors in Chicago scored higher than 1200 in SAT at significance level \( \alpha \). In what follows, suppose that it is known that \( 0 < \mathbb{P}\{X > 1200\} < 1 \).
+    \begin{itemize}
+        \item[(i)] Formally state the null and alternative hypotheses.
+        \begin{solution}
+            $H_0: \theta \geq \frac{1}{4}$ and $H_a: \theta < \frac{1}{4}$
+        \end{solution}
+        \item[(ii)] Suppose your sample size is large. How would you perform the test? Write down your test statistic, critical value, and the rule you would use to determine whether or not to reject the null hypothesis.
+    \begin{solution}
+        Test statistic is just the $Z$ score. I would the sample proportion, $\hat{\theta}_n$ defined in part (b). Since the estimator is Bernoulli and $n$ is large, then by the CLT 
+        \[\frac{\sqrt{n}(\hat{\theta}_n - \theta)}{\sqrt{\frac{\theta(1-\theta)}{n}}} = \frac{n(\hat{\theta}_n - \theta)}{\sqrt{\theta(1-\theta)}}\sim N(0,1)\] Under the null, 
+        \[Z = \frac{n(\hat{\theta}_n - \frac{1}{4})}{\frac{3}{16}}\] and reject when ($\alpha = 0.05$ as our significance level implying critical value $z_{\alpha} = -1.65$)
+        \[Z  < -1.65 \iff \frac{n(\hat{\theta}_n - \frac{1}{4})}{\sqrt{\frac{3}{16}}} < -1.65 \iff \hat{\theta}_n < \frac{1}{4}-\frac{1.65}{n}{\frac{\sqrt{3}}{4}}\]
+    \end{solution}
+        \item[(iii)] State in words the definition of p-value. What is the p-value for your test?
+        \begin{solution}
+            The $p$ value is the smallest $\alpha-$value for which we reject the null hypothesis. In other words, 
+        \[1-\bbP\{Z \leq \text{observed}\}= 1-\Phi(\frac{n(\hat{\theta}_n - \frac{1}{4})}{\frac{3}{16}})\]
+        \end{solution}
+    \end{itemize}
+\end{enumerate}
+
+\newpage
+\section*{Problem 5 (Optional)}
+The following question involves the California Test Score dataset. The dataset is described in Appendix 4.1 of Stock and Watson and can be downloaded from the course website.
+
+\begin{enumerate}
+    \item[(a)] Load the California Test Score dataset into R. How many observations do you have in the dataset?
+    \item[(b)] The variable \texttt{avginc} is average district income measured in 1000s of dollars. Define a new variable, \texttt{income}, which is the variable \texttt{avginc} multiplied by 1000.
+    \begin{itemize}
+        \item[(i)] What does the variable \texttt{income} measure?
+        \item[(ii)] What is the mean and standard deviation of \texttt{avginc}?
+        \item[(iii)] What is the mean and standard deviation of \texttt{income}? Given your result to part (ii), are the mean and standard deviation for \texttt{income} what you expected? Why?
+    \end{itemize}
+    \item[(c)]
+    \begin{itemize}
+        \item[(i)] What is the mean math score across all districts?
+        \item[(ii)] What fraction of districts have an average class size of 20 or fewer students? What is the mean math score in districts with average class size of 20 or fewer students?
+        \item[(iii)] What fraction of districts have an average class size of more than 20 students? What is the mean math score in districts with average class size greater than 20?
+        \item[(iv)] What is the connection between your answer in (i) and your answers in (ii) and (iii)?
+        \item[(v)] Calculate a test at the 10\% level of whether the mean math score in districts with average class size of 20 or fewer students is equal to the mean math score in districts with average class size greater than 20. Formally state your null hypothesis in terms of population-level conditional expectations. Describe your testing procedure. Can you reject the null hypothesis?
+        \item[(vi)] What is the covariance between \texttt{avginc} and mean math score? What is the covariance between \texttt{income} and mean math score? Are the two covariances the same or different? Explain.
+        \item[(vii)] What is the correlation between \texttt{avginc} and mean math score? What is the correlation between \texttt{income} and mean math score? Are the two correlations the same or different? Explain.
+    \end{itemize}
+\end{enumerate}
+
+
+\end{document}

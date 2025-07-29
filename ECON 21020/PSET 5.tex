@@ -1,0 +1,317 @@
+\documentclass[11pt]{article}
+\usepackage{float}
+
+% NOTE: Add in the relevant information to the commands below; or, if you'll be using the same information frequently, add these commands at the top of paolo-pset.tex file. 
+\newcommand{\name}{Agustín Esteva \heart}
+\newcommand{\email}{aesteva@uchicago.edu}
+\newcommand{\classnum}{20210}
+\newcommand{\subject}{Econometrics \heart}
+\newcommand{\instructors}{Murilo Ramos}
+\newcommand{\assignment}{Problem Set 4}
+\newcommand{\semester}{Summer 2025}
+\newcommand{\duedate}{\today}
+\newcommand{\bA}{\mathbf{A}}
+\newcommand{\bB}{\mathbf{B}}
+\newcommand{\bC}{\mathbf{C}}
+\newcommand{\bD}{\mathbf{D}}
+\newcommand{\bE}{\mathbf{E}}
+\newcommand{\bF}{\mathbf{F}}
+\newcommand{\bG}{\mathbf{G}}
+\newcommand{\bH}{\mathbf{H}}
+\newcommand{\bI}{\mathbf{I}}
+\newcommand{\bJ}{\mathbf{J}}
+\newcommand{\bK}{\mathbf{K}}
+\newcommand{\bL}{\mathbf{L}}
+\newcommand{\bM}{\mathbf{M}}
+\newcommand{\bN}{\mathbf{N}}
+\newcommand{\bO}{\mathbf{O}}
+\newcommand{\bP}{\mathbf{P}}
+\newcommand{\bQ}{\mathbf{Q}}
+\newcommand{\bR}{\mathbf{R}}
+\newcommand{\bS}{\mathbf{S}}
+\newcommand{\bT}{\mathbf{T}}
+\newcommand{\bU}{\mathbf{U}}
+\newcommand{\bV}{\mathbf{V}}
+\newcommand{\bW}{\mathbf{W}}
+\newcommand{\bX}{\mathbf{X}}
+\newcommand{\bY}{\mathbf{Y}}
+\newcommand{\bZ}{\mathbf{Z}}
+\newcommand{\Vol}{\text{Vol}}
+\newcommand{\MSE}{\text{MSE}}
+\newcommand{\Bias}{\text{Bias}}
+\newcommand{\Var}{\text{Var}}
+\newcommand{\Cov}{\text{Cov}}
+\newcommand{\Corr}{\text{Corr}}
+
+
+
+%% blackboard bold math capitals
+\newcommand{\bbA}{\mathbb{A}}
+\newcommand{\bbB}{\mathbb{B}}
+\newcommand{\bbC}{\mathbb{C}}
+\newcommand{\bbD}{\mathbb{D}}
+\newcommand{\bbE}{\mathbb{E}}
+\newcommand{\bbF}{\mathbb{F}}
+\newcommand{\bbG}{\mathbb{G}}
+\newcommand{\bbH}{\mathbb{H}}
+\newcommand{\bbI}{\mathbb{I}}
+\newcommand{\bbJ}{\mathbb{J}}
+\newcommand{\bbK}{\mathbb{K}}
+\newcommand{\bbL}{\mathbb{L}}
+\newcommand{\bbM}{\mathbb{M}}
+\newcommand{\bbN}{\mathbb{N}}
+\newcommand{\bbO}{\mathbb{O}}
+\newcommand{\bbP}{\mathbb{P}}
+\newcommand{\bbQ}{\mathbb{Q}}
+\newcommand{\bbR}{\mathbb{R}}
+\newcommand{\bbS}{\mathbb{S}}
+\newcommand{\bbT}{\mathbb{T}}
+\newcommand{\bbU}{\mathbb{U}}
+\newcommand{\bbV}{\mathbb{V}}
+\newcommand{\bbW}{\mathbb{W}}
+\newcommand{\bbX}{\mathbb{X}}
+\newcommand{\bbY}{\mathbb{Y}}
+\newcommand{\bbZ}{\mathbb{Z}}
+
+%% script math capitals
+\newcommand{\sA}{\mathscr{A}}
+\newcommand{\sB}{\mathscr{B}}
+\newcommand{\sC}{\mathscr{C}}
+\newcommand{\sD}{\mathscr{D}}
+\newcommand{\sE}{\mathscr{E}}
+\newcommand{\sF}{\mathscr{F}}
+\newcommand{\sG}{\mathscr{G}}
+\newcommand{\sH}{\mathscr{H}}
+\newcommand{\sI}{\mathscr{I}}
+\newcommand{\sJ}{\mathscr{J}}
+\newcommand{\sK}{\mathscr{K}}
+\newcommand{\sL}{\mathscr{L}}
+\newcommand{\sM}{\mathscr{M}}
+\newcommand{\sN}{\mathscr{N}}
+\newcommand{\sO}{\mathscr{O}}
+\newcommand{\sP}{\mathscr{P}}
+\newcommand{\sQ}{\mathscr{Q}}
+\newcommand{\sR}{\mathscr{R}}
+\newcommand{\sS}{\mathscr{S}}
+\newcommand{\sT}{\mathscr{T}}
+\newcommand{\sU}{\mathscr{U}}
+\newcommand{\sV}{\mathscr{V}}
+\newcommand{\sW}{\mathscr{W}}
+\newcommand{\sX}{\mathscr{X}}
+\newcommand{\sY}{\mathscr{Y}}
+\newcommand{\sZ}{\mathscr{Z}}
+
+
+\renewcommand{\emptyset}{\O}
+
+\newcommand{\abs}[1]{\lvert #1 \rvert}
+\newcommand{\norm}[1]{\lVert #1 \rVert}
+\newcommand{\sm}{\setminus}
+
+
+
+\newcommand{\sarr}{\rightarrow}
+\newcommand{\arr}{\longrightarrow}
+
+% NOTE: Defining collaborators is optional; to not list collaborators, comment out the line below.
+%\newcommand{\collaborators}{Alyssa P. Hacker (\texttt{aphacker}), Ben Bitdiddle (\texttt{bitdiddle})}
+
+\input{paolo-pset.tex}
+
+% NOTE: To compile a version of this pset without problems, solutions, or reflections, uncomment the relevant line below.
+
+%\excludeversion{problem}
+%\excludeversion{solution}
+%\excludeversion{reflection}
+
+\begin{document}	
+
+	% Use the \psetheader command at the beginning of a pset. 
+	\psetheader
+\section*{Problem 1}
+
+Stock and Watson, Exercises *6.11, *7.4, *7.8.(a)-(b)
+
+\newpage
+\section*{Problem 2}
+
+Consider the following model of the determinants of wages:
+
+\[
+\log(\text{wage}) = \beta_0 + \beta_1 \text{educ} + \beta_2 \text{pareduc} \times \text{educ} + \beta_3 \text{experience} + \beta_4 \text{experience}^2 + U,
+\]
+where:
+\begin{itemize}
+    \item \textbf{experience} = years of individual work experience
+    \item \textbf{pareduc} = sum of the mother's and father's years of education
+    \item \textbf{educ} = years of own education
+\end{itemize}
+
+\begin{enumerate}
+    \item[(a)] What is the percent return on wages from another year of own education? Does it depend on the level of own education? Does it depend on parents’ education? Does it depend on the level of work experience?
+    \begin{solution}
+        Solving, 
+        \[\frac{\partial \log \text{wage}}{\partial \text{educ}} = \beta_1 + \beta_2 \text{paraeduc}\] We know from the SLR that 
+        \[\% \Delta Y = 100(\beta_1 + \beta_2 \text{paraeduc})\Delta \text{education}\] and so it depends on parents education only!
+    \end{solution}
+    
+    \item[(b)] What is the percent return on wages from another year of work experience? Does it depend on the level of own education? Does it depend on parents’ education? Does it depend on the level of work experience?
+    \begin{solution}
+        One can take partials to discover that 
+        \[\% \Delta Y = 100(\beta_3 + 2\beta_4 \text{experience})\Delta \text{experience}\] so it only deepends on experience!
+    \end{solution}
+    
+    \item[(c)] Using 722 observations, the following OLS estimates were obtained: 
+    \[
+    \hat{\beta}_0 = 5.65,\quad \hat{\beta}_1 = 0.047,\quad \hat{\beta}_2 = 0.00078,\quad \hat{\beta}_3 = 0.22,\quad \hat{\beta}_4 = -0.005
+    \]
+    \begin{enumerate}
+        \item[i.] Compute the estimated return to an additional year of own education if both parents have high school education ($\text{pareduc} = 24$), and if both parents have college degrees ($\text{pareduc} = 32$). Use these results to interpret the estimated interaction between own education and parents’ education.
+        \begin{solution}
+            From part (a), we plug in the numbers and find the percent return to be 
+            \begin{itemize}
+                \item ($24$) An increase of $6.574\%$
+                \item ($32$) An increase of $7.196\%$
+            \end{itemize}
+            Thus, more parent education is associated with a higher increase in the return of wages given a higher number of your own education.
+        \end{solution}
+        
+        \item[ii.] Compute the estimated return to an additional year of experience if the individual has zero years of experience ($\text{experience} = 0$), and if the individual has 20 years of experience ($\text{experience} = 20$). Use these results to interpret $\hat{\beta}_4$.
+\begin{solution}
+    From part (b), we plug in 
+    \begin{itemize}
+        \item ($0$) An increase of $22\%$
+        \item ($20$) An increase of $2\%$
+    \end{itemize}
+    Thus, $\beta_4$ is the sensitivity of the change in wages depending on the change experience from current experience. In this case, this $\beta_4$ is lowkey not good, as it points to diminishing returns.  
+\end{solution}
+        \item[iii.] How would the OLS estimates of $\beta_3$ and $\beta_4$ change if experience was measured in months instead of years?
+        \begin{solution}
+            Just divide by $12$ bruv: 
+            \[\beta_0' = \beta_0 \quad \beta_1'  = \beta_1 \quad \beta_2' = \beta_2 \quad \beta_3' = \frac{\beta_3}{12}\quad \beta_4' = \frac{\beta_4}{144}\]
+        \end{solution}
+    \end{enumerate}
+\end{enumerate}
+
+\newpage
+\section*{Problem 3}
+
+Levitt and Venkatesh investigate Chicago street gangs by modelling the determinants of the wages paid to “foot soldiers” in the gangs. They estimated the following regression:
+\[
+\text{wage} = \beta_0 + \beta_1 \text{war} + \beta_2 \text{large} + U,
+\]
+where:
+\begin{itemize}
+    \item \textbf{wage} = the hourly wage paid to the foot soldiers
+    \item \textbf{war} = 
+    \[
+    \begin{cases}
+    1 & \text{if the gang is currently involved in a gang war} \\
+    0 & \text{otherwise}
+    \end{cases}
+    \]
+    \item \textbf{large} = 
+    \[
+    \begin{cases}
+    1 & \text{if the gang is ``large''} \\
+    0 & \text{otherwise}
+    \end{cases}
+    \]
+\end{itemize}
+and found that $\hat{\beta}_0 = 1.83$, $\hat{\beta}_1 = 1.3$, $\hat{\beta}_2 = 4.07$.
+
+\begin{enumerate}
+    \item[(a)] According to their estimates, what is the average wage paid to a foot soldier in a small gang that is not at war?
+    \begin{solution}
+        Plug in $\text{war} = 0$ and $\text{large} = 0$ to see that 
+        \[\hat{\text{wage}} = \hat\beta_0 = 1.83\]
+    \end{solution}
+    
+    \item[(b)] Why did they include a dummy variable for the gang being large but not also for the gang being small?
+    \begin{solution}
+Just plug in $0$ or $1$ depending on size of gang. 
+    \end{solution}
+    \item[(c)] How would you modify their regression to allow for the effects of a gang war on wages to be different for members of large versus small gangs? What is the reference group in your suggested model?
+    \begin{solution}
+        Consider 
+        \[\text{wage} = \beta_0' + \beta_1' \text{war} + \beta_2' \text{large} + \beta_3' \text{large} \cdot \text{war} + U'\] reference group is still small gang not at war.
+    \end{solution}
+    
+    \item[(d)] Explain the interpretation of each of the coefficients in your model.
+    \begin{solution}
+        $\beta_0'$ same as before, $\beta_1'$ is the difference in wages between a small gang at war and at peace, $\beta_2'$ is the difference in wages between a warring gang that is big and one that is small, $\beta_3'$ is the difference of the differences coefficient- which measures how much the wages change depending on size and war 
+    \end{solution}
+\end{enumerate}
+
+\newpage
+\section*{Problem 4}
+
+Prove the missing steps of the FWL theorem from our lecture:
+
+\begin{enumerate}
+    \item[(a)] $\text{cov}(X^*_j, X_l) = 0$ for all $l \ne j$
+    \begin{solution}
+        Consider that if
+        \[X_j = \text{BLP}(X_j \mid X_{-j}) + U_{X_j},\] then we have showed in class that since the BLP minimizes mean square error, then 
+        \[\bbE[U_{X_j}] = 0,\] but 
+        \[U_{X_j} = X_j - \text{BLP}(X_j \mid X_{-j}) = X_j^*,\] and so we are done since 
+        \begin{align*}
+        \Cov(X_j^*, X_\ell) &= \bbE[X_j^* X_\ell] - \bbE[X_j^*]\bbE[X_{\ell}]\\
+        &= \bbE[\bbE[X_j^* X_\ell \mid X_\ell]]\\
+        &= \bbE[X_\ell \bbE[X_j^* \mid X_\ell]]\\
+        &= 0
+        \end{align*}
+        
+    \end{solution}
+    
+    \item[(b)] $\text{cov}(X^*_j, X_j) = \text{Var}(X^*_j)$
+    \begin{solution}
+        We compute
+        \begin{align*}
+            \Cov(X_j^*, X_j) &= \Cov(X_j^*, X_j^* + \text{BLP}(X_j \mid X_{-j}))\\
+            &= \Var(X_j^*) + \Cov(X_j^*, \alpha_0 + \alpha_1 X_1 + \cdots + \alpha_{j-1}X_{j-1} + \alpha_{j+1}X_{j+1} + \cdots + \alpha_k X_k)
+        \end{align*}
+        But we know by part (a) that the second term vanishes.
+    \end{solution}
+    
+    \item[(c)] $\text{Cov}(X^*_j, U) = 0$
+    \begin{solution}
+       Recall that a basic assumption of the model is that $\Cov(X_j, U)=  0$ for any $j \in [k].$ Thus,  
+    \begin{align*}
+        \Cov(X_j^*, U) &= \Cov(X_j - \sum_{i\neq j} \alpha_i X_i, U)\\
+        &= \Cov(X_j, U) - \sum_{i\neq j} \alpha_i^2 \Cov(X_i, U)\\
+        &= 0
+    \end{align*}
+    by the assumption.
+    \end{solution}
+    
+\end{enumerate}
+
+where $X^*_j = X_j - \text{BLP}(X_j | X_{-j})$ and $u = Y - \text{BLP}(Y | X)$.
+
+\newpage
+\section*{Problem 5}
+
+\emph{(* You will need to download the dataset for this problem from the course webpage.)}  
+The dataset has 4 variables in the following order: \texttt{college} (an indicator for completing college), \texttt{hs} (an indicator for completing high school, but not college), \texttt{wage} (average hourly wage), and \texttt{fem} (an indicator for female).
+
+Consider the following model of the determinants of income:
+\[
+\text{wage} = \beta_0 + \beta_1 \text{fem} + \beta_2 \text{college} + \beta_3 \text{hs} + U
+\]
+
+\begin{enumerate}
+    \item[(a)] Show that the regressors are not perfectly colinear in this dataset. (Hint: regress one regressor on the other regressors).
+    
+    \item[(b)] Assume the model is causal. What is the interpretation of $U$? Is it uncorrelated with the regressors? Interpret each of the coefficients in the model.
+    
+    \item[(c)] Assume the model above is the BLP$(\text{wages} | \text{fem}, \text{college}, \text{hs})$. What is the interpretation of $U$? Is it uncorrelated with the regressors? Interpret each of the coefficients in the model.
+    
+    \item[(d)] Estimate a model that allows the partial correlation (coefficients of the BLP) between college and wages to depend on gender, and the partial correlation between high school completion and wages to depend on gender. Report your table of estimates.
+    
+    \item[(e)] Test at the 5\% significance level whether the partial correlation between college and wages depends on gender. Explain your results.
+    
+    \item[(f)] Test at the 5\% significance level whether the partial correlation between high school or college and wages depends on gender. Explain your results.
+\end{enumerate}
+
+    \end{document}

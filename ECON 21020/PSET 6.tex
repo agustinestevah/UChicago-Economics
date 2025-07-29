@@ -1,0 +1,335 @@
+\documentclass[11pt]{article}
+\usepackage{float}
+
+% NOTE: Add in the relevant information to the commands below; or, if you'll be using the same information frequently, add these commands at the top of paolo-pset.tex file. 
+\newcommand{\name}{Agustín Esteva \heart}
+\newcommand{\email}{aesteva@uchicago.edu}
+\newcommand{\classnum}{20210}
+\newcommand{\subject}{Econometrics \heart}
+\newcommand{\instructors}{Murilo Ramos}
+\newcommand{\assignment}{Problem Set 4}
+\newcommand{\semester}{Summer 2025}
+\newcommand{\duedate}{\today}
+\newcommand{\bA}{\mathbf{A}}
+\newcommand{\bB}{\mathbf{B}}
+\newcommand{\bC}{\mathbf{C}}
+\newcommand{\bD}{\mathbf{D}}
+\newcommand{\bE}{\mathbf{E}}
+\newcommand{\bF}{\mathbf{F}}
+\newcommand{\bG}{\mathbf{G}}
+\newcommand{\bH}{\mathbf{H}}
+\newcommand{\bI}{\mathbf{I}}
+\newcommand{\bJ}{\mathbf{J}}
+\newcommand{\bK}{\mathbf{K}}
+\newcommand{\bL}{\mathbf{L}}
+\newcommand{\bM}{\mathbf{M}}
+\newcommand{\bN}{\mathbf{N}}
+\newcommand{\bO}{\mathbf{O}}
+\newcommand{\bP}{\mathbf{P}}
+\newcommand{\bQ}{\mathbf{Q}}
+\newcommand{\bR}{\mathbf{R}}
+\newcommand{\bS}{\mathbf{S}}
+\newcommand{\bT}{\mathbf{T}}
+\newcommand{\bU}{\mathbf{U}}
+\newcommand{\bV}{\mathbf{V}}
+\newcommand{\bW}{\mathbf{W}}
+\newcommand{\bX}{\mathbf{X}}
+\newcommand{\bY}{\mathbf{Y}}
+\newcommand{\bZ}{\mathbf{Z}}
+\newcommand{\Vol}{\text{Vol}}
+\newcommand{\MSE}{\text{MSE}}
+\newcommand{\Bias}{\text{Bias}}
+\newcommand{\Var}{\text{Var}}
+\newcommand{\Cov}{\text{Cov}}
+\newcommand{\Corr}{\text{Corr}}
+
+
+
+%% blackboard bold math capitals
+\newcommand{\bbA}{\mathbb{A}}
+\newcommand{\bbB}{\mathbb{B}}
+\newcommand{\bbC}{\mathbb{C}}
+\newcommand{\bbD}{\mathbb{D}}
+\newcommand{\bbE}{\mathbb{E}}
+\newcommand{\bbF}{\mathbb{F}}
+\newcommand{\bbG}{\mathbb{G}}
+\newcommand{\bbH}{\mathbb{H}}
+\newcommand{\bbI}{\mathbb{I}}
+\newcommand{\bbJ}{\mathbb{J}}
+\newcommand{\bbK}{\mathbb{K}}
+\newcommand{\bbL}{\mathbb{L}}
+\newcommand{\bbM}{\mathbb{M}}
+\newcommand{\bbN}{\mathbb{N}}
+\newcommand{\bbO}{\mathbb{O}}
+\newcommand{\bbP}{\mathbb{P}}
+\newcommand{\bbQ}{\mathbb{Q}}
+\newcommand{\bbR}{\mathbb{R}}
+\newcommand{\bbS}{\mathbb{S}}
+\newcommand{\bbT}{\mathbb{T}}
+\newcommand{\bbU}{\mathbb{U}}
+\newcommand{\bbV}{\mathbb{V}}
+\newcommand{\bbW}{\mathbb{W}}
+\newcommand{\bbX}{\mathbb{X}}
+\newcommand{\bbY}{\mathbb{Y}}
+\newcommand{\bbZ}{\mathbb{Z}}
+
+%% script math capitals
+\newcommand{\sA}{\mathscr{A}}
+\newcommand{\sB}{\mathscr{B}}
+\newcommand{\sC}{\mathscr{C}}
+\newcommand{\sD}{\mathscr{D}}
+\newcommand{\sE}{\mathscr{E}}
+\newcommand{\sF}{\mathscr{F}}
+\newcommand{\sG}{\mathscr{G}}
+\newcommand{\sH}{\mathscr{H}}
+\newcommand{\sI}{\mathscr{I}}
+\newcommand{\sJ}{\mathscr{J}}
+\newcommand{\sK}{\mathscr{K}}
+\newcommand{\sL}{\mathscr{L}}
+\newcommand{\sM}{\mathscr{M}}
+\newcommand{\sN}{\mathscr{N}}
+\newcommand{\sO}{\mathscr{O}}
+\newcommand{\sP}{\mathscr{P}}
+\newcommand{\sQ}{\mathscr{Q}}
+\newcommand{\sR}{\mathscr{R}}
+\newcommand{\sS}{\mathscr{S}}
+\newcommand{\sT}{\mathscr{T}}
+\newcommand{\sU}{\mathscr{U}}
+\newcommand{\sV}{\mathscr{V}}
+\newcommand{\sW}{\mathscr{W}}
+\newcommand{\sX}{\mathscr{X}}
+\newcommand{\sY}{\mathscr{Y}}
+\newcommand{\sZ}{\mathscr{Z}}
+
+
+\renewcommand{\emptyset}{\O}
+
+\newcommand{\abs}[1]{\lvert #1 \rvert}
+\newcommand{\norm}[1]{\lVert #1 \rVert}
+\newcommand{\sm}{\setminus}
+
+
+
+\newcommand{\sarr}{\rightarrow}
+\newcommand{\arr}{\longrightarrow}
+
+% NOTE: Defining collaborators is optional; to not list collaborators, comment out the line below.
+%\newcommand{\collaborators}{Alyssa P. Hacker (\texttt{aphacker}), Ben Bitdiddle (\texttt{bitdiddle})}
+
+\input{paolo-pset.tex}
+
+% NOTE: To compile a version of this pset without problems, solutions, or reflections, uncomment the relevant line below.
+
+%\excludeversion{problem}
+%\excludeversion{solution}
+%\excludeversion{reflection}
+
+\begin{document}	
+
+	% Use the \psetheader command at the beginning of a pset. 
+	\psetheader
+\section*{Problem 1}
+
+The demand for a commodity is given by:
+\[
+Q = \beta_0 + \beta_1 P + u,
+\]
+where \( Q \) denotes quantity, \( P \) denotes price, and \( u \) denotes factors other than price that determine demand.
+
+The supply for the commodity is given by:
+\[
+Q = \gamma_0 + \gamma_1 P + v,
+\]
+where \( v \) denotes factors other than price that determine supply.
+
+Suppose \( u \) and \( v \) both have a mean of 0, have variances \( \sigma_u^2 \) and \( \sigma_v^2 \), and are mutually uncorrelated.
+
+\begin{enumerate}
+    \item Solve the two simultaneous equations to show how \( Q \) and \( P \) depend on \( u \) and \( v \).
+    \begin{solution}
+    Solving for $P:$
+        \[\gamma_0 + \gamma_1 P + v = \beta_0 + \beta_1 P + u \iff \boxed{P = \frac{u- v +\beta_0- \gamma_0}{\gamma_1 - \beta_1}}\]
+    Solving for $Q:$
+        \[P = \frac{Q-\beta_0-u}{\beta_1}\] \[Q = \gamma_0+\gamma_1\Big(\frac{Q-\beta_0-u}{\beta_1}\Big)+v = \gamma_0+\frac{\gamma_1}{\beta_1}Q + \gamma_1\Big(\frac{-\beta_0-u}{\beta_1}\Big)+v\]
+        \[\frac{\beta_1-\gamma_1}{\beta_1}Q = \gamma_0+ \gamma_1\Big(\frac{-\beta_0-u}{\beta_1}\Big)+v\]
+        \[\implies Q = \frac{\beta_1}{\beta_1-\gamma_1}\Big(\gamma_0+ \gamma_1\Big(\frac{-\beta_0-u}{\beta_1}\Big)+v\Big)\]
+    \end{solution}
+    
+    \item Derive the means of \( P \) and \( Q \).
+    \begin{solution}
+        \begin{align*}
+            \bbE[P] &= \frac{\beta_0 - \gamma_0}{\gamma_1 - \beta_1}
+        \end{align*}
+        and 
+        \[\bbE[Q] = \beta_0 + \beta_1 \bbE[P] \]
+    \end{solution}
+    
+    \item Derive the variance of \( P \), the variance of \( Q \), and the covariance between \( Q \) and \( P \).
+    \begin{solution}
+        \begin{align*}
+            \Var(P) &= \frac{\sigma_u^2 + \sigma_v^2}{(\gamma_1 - \beta_1)^2}
+        \end{align*}
+        \begin{align*}
+            \Var(Q) &= \beta_1^2\Var(P) + \sigma_u^2 + 2\beta_1\Cov( P , u)\\
+            &= \beta_1^2\Var(P) + \sigma_u^2 + 2\frac{\beta_1}{\gamma_1 - \beta_1}\Cov( u-v , u)\\
+            &= \beta_1^2\Var(P) + \sigma_u^2 + 2\frac{\beta_1}{\gamma_1 - \beta_1} \sigma_u^2\\
+        \end{align*}
+
+        \begin{align*}
+            \Cov(Q,P) &= \Cov(\beta_0 + \beta_1 P + u, P)\\
+            &= \beta_1 \gamma_1\Var(P) + \Cov(u,P)\\
+            &= \beta_1 \gamma_1 \Var(P) + \Cov(\frac{u-v + \beta_0 - \gamma_0}{\gamma_1 - \beta_0}, u)\\
+            &= \beta_1 \gamma_1\Var(P) + \frac{1}{\gamma_1 - \beta_0} \sigma_u^2
+        \end{align*}
+    \end{solution}
+    
+    \item A random sample of observations of \( (Q_i, P_i) \) is collected, and \( Q_i \) is regressed on \( P_i \). That is, \( Q_i \) is the regressand and \( P_i \) is the regressor. Suppose the sample is very large.
+    \begin{enumerate}
+        \item Use your answers to parts (b) and (c) to derive values of the regression coefficients. \textit{[Hint: Use Equations (4.7) and (4.8).]}
+        \begin{solution}
+        We assume $Q_i = \beta_0^* + \beta_1^* P_i + U$ We know that 
+            \begin{align*}
+                \beta_1^*&= \frac{\Cov(Q_i, P_i)}{\Var(P_i)}\\
+                &= \frac{\beta_1 \gamma_1\Var(P) + \frac{1}{\gamma_1 - \beta_0} \sigma_u^2}{\frac{\sigma_u^2 + \sigma_v^2}{(\gamma_1 - \beta_1)^2}}
+            \end{align*}
+            and 
+            \[\beta_0^* = \bbE[Q] - \beta_1^* \bbE[P]\]
+        \end{solution}
+        
+        \item A researcher uses the slope of this regression as an estimate of the slope of the demand function \( \beta_1 \). Is the estimated slope too large or too small? \textit{(Hint: Remember that demand curves slope down and supply curves slope up.)}
+        \begin{solution}
+            Since $|\beta_1^*|< \beta_1,$ then we have shown in class that this implies that the estimated slope is too small!
+        \end{solution}
+    \end{enumerate}
+\end{enumerate}
+
+
+
+
+\vspace{2.5in}
+\newpage
+
+\section*{Problem 2}
+
+Show why the adjusted \( R^2 \) is always smaller or equal to the \( R^2 \).
+
+\begin{solution}
+Clearly
+
+\begin{align*}
+    \overline{R}^2 \leq R^2 &\iff 1 - \frac{n-1}{n-k-1}\frac{\text{SRR}}{TSS}\\ &\iff \leq 1 - \frac{\text{SRR}}{TSS}\\ &\iff
+    1 \leq \frac{n-1}{n-k-1} \\
+    &\iff n-k-1 \leq n-1 \\
+    &\iff 0\leq k
+\end{align*}
+Which is always true.
+\end{solution}
+
+
+
+
+
+\newpage
+
+\section*{Problem 3}
+
+Assume that \( \beta = (\beta_0, \beta_1, \beta_2) \) in a BLP model:
+\[
+Y = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + U,
+\]
+that satisfies the basic setup. We proved that
+\[
+\sqrt{n}(\hat{\beta} - \beta) \xrightarrow{d} \mathcal{N}(0, \Sigma).
+\]
+
+Assume we want to test the joint hypothesis that all coefficients are zero, including the intercept.
+
+\subsection*{(a)}
+
+Write down the \( R \) matrix in this case. What is \( R\beta \) under the null hypothesis?
+\begin{solution}
+    \[R = \begin{bmatrix}
+        1 & 0 &0\\
+        0 & 1 & 0\\
+        0 & 0 &1
+    \end{bmatrix}\] so that 
+    \[R\beta = \begin{pmatrix}
+        \beta_0\\
+    \beta_1\\\beta_2
+    \end{pmatrix}\]
+\end{solution}
+
+\subsection*{(b)}
+
+Compute the Wald-statistic for this joint hypothesis test. Give an intuitive explanation on why this statistic is sensible for the desired test. (For this item, assume \( \Sigma = I_{k+1} \), where \( I_{k+1} \) is an identity matrix with dimension \( k+1 \).)
+
+\begin{solution}
+    
+\begin{align*}
+    T_n &= n\begin{pmatrix}
+        \hat{\beta}_0 & \hat{\beta}_1 &\hat{\beta}_2
+    \end{pmatrix} \begin{pmatrix}
+        1 & 0 & 0 \\
+        0 & 1 & 0\\
+        0 & 0 &1
+    \end{pmatrix}\begin{pmatrix}
+        \hat{\beta}_0 \\ \hat{\beta}_1 \\\hat{\beta}_2
+    \end{pmatrix}\\
+    &= n \sum_{i=0}^2 ( \hat \beta_i)^2
+\end{align*}
+\end{solution}
+
+
+\subsection*{(c)}
+
+Assume we want to test the joint hypothesis that all slope coefficients are zero (therefore, not including the intercept).
+
+Write down the \( R \) matrix in this case.
+
+\begin{solution}
+    \begin{align*}
+        R = \begin{pmatrix}
+            0 & 1 & 0\\
+            0 & 0 & 1
+        \end{pmatrix}
+    \end{align*} so then 
+    \[R\beta = \begin{pmatrix}
+        \beta_1\\ \beta_2
+    \end{pmatrix}\]
+\end{solution}
+
+\subsection*{(d)}
+
+Assume we collect a sample of size 90 and estimated:
+\[
+\hat{\beta} = (1, 3, 2)' \quad \text{and} \quad
+\hat{\Sigma} =
+\begin{pmatrix}
+\widehat{\text{Var}}(\hat{\beta}_0) & \widehat{\text{Cov}}(\hat{\beta}_0, \hat{\beta}_1) & \widehat{\text{Cov}}(\hat{\beta}_0, \hat{\beta}_2) \\
+\widehat{\text{Cov}}(\hat{\beta}_0, \hat{\beta}_1) & 4 & 2 \\
+\widehat{\text{Cov}}(\hat{\beta}_0, \hat{\beta}_2) & 2 & 4
+\end{pmatrix}
+\]
+
+Compute the Wald-statistic for this joint hypothesis test.
+\begin{solution}
+    Computing 
+    \[T_n = 90 \begin{pmatrix}
+        \hat\beta_1 & \hat\beta_2
+    \end{pmatrix} \begin{pmatrix}
+        4 & 2\\ 
+         2 & 4
+    \end{pmatrix}^{-1}\begin{pmatrix}
+         \hat\beta_1 \\ \hat\beta_2
+    \end{pmatrix} = 90 \cdot \frac{28}{12} =210 \]
+\end{solution}
+
+\subsection*{(e)}
+
+Do you reject the null hypothesis for question (c) at the 5\% significance level? (You may use asymptotic results here.)
+\begin{solution}
+    We reject that ahh. Our critical score is $5.991$ and $210$ lowkey bigger. 
+\end{solution}
+
+
+\end{document}

@@ -1,0 +1,315 @@
+\documentclass[11pt]{article}
+
+
+% NOTE: Add in the relevant information to the commands below; or, if you'll be using the same information frequently, add these commands at the top of paolo-pset.tex file. 
+\newcommand{\name}{Agustín Esteva \heart}
+\newcommand{\email}{aesteva@uchicago.edu}
+\newcommand{\classnum}{20210}
+\newcommand{\subject}{Econometrics \heart}
+\newcommand{\instructors}{Murilo Ramos}
+\newcommand{\assignment}{Problem Set 4}
+\newcommand{\semester}{Summer 2025}
+\newcommand{\duedate}{\today}
+\newcommand{\bA}{\mathbf{A}}
+\newcommand{\bB}{\mathbf{B}}
+\newcommand{\bC}{\mathbf{C}}
+\newcommand{\bD}{\mathbf{D}}
+\newcommand{\bE}{\mathbf{E}}
+\newcommand{\bF}{\mathbf{F}}
+\newcommand{\bG}{\mathbf{G}}
+\newcommand{\bH}{\mathbf{H}}
+\newcommand{\bI}{\mathbf{I}}
+\newcommand{\bJ}{\mathbf{J}}
+\newcommand{\bK}{\mathbf{K}}
+\newcommand{\bL}{\mathbf{L}}
+\newcommand{\bM}{\mathbf{M}}
+\newcommand{\bN}{\mathbf{N}}
+\newcommand{\bO}{\mathbf{O}}
+\newcommand{\bP}{\mathbf{P}}
+\newcommand{\bQ}{\mathbf{Q}}
+\newcommand{\bR}{\mathbf{R}}
+\newcommand{\bS}{\mathbf{S}}
+\newcommand{\bT}{\mathbf{T}}
+\newcommand{\bU}{\mathbf{U}}
+\newcommand{\bV}{\mathbf{V}}
+\newcommand{\bW}{\mathbf{W}}
+\newcommand{\bX}{\mathbf{X}}
+\newcommand{\bY}{\mathbf{Y}}
+\newcommand{\bZ}{\mathbf{Z}}
+\newcommand{\Vol}{\text{Vol}}
+\newcommand{\MSE}{\text{MSE}}
+\newcommand{\Bias}{\text{Bias}}
+\newcommand{\Var}{\text{Var}}
+\newcommand{\Cov}{\text{Cov}}
+\newcommand{\Corr}{\text{Corr}}
+
+
+
+%% blackboard bold math capitals
+\newcommand{\bbA}{\mathbb{A}}
+\newcommand{\bbB}{\mathbb{B}}
+\newcommand{\bbC}{\mathbb{C}}
+\newcommand{\bbD}{\mathbb{D}}
+\newcommand{\bbE}{\mathbb{E}}
+\newcommand{\bbF}{\mathbb{F}}
+\newcommand{\bbG}{\mathbb{G}}
+\newcommand{\bbH}{\mathbb{H}}
+\newcommand{\bbI}{\mathbb{I}}
+\newcommand{\bbJ}{\mathbb{J}}
+\newcommand{\bbK}{\mathbb{K}}
+\newcommand{\bbL}{\mathbb{L}}
+\newcommand{\bbM}{\mathbb{M}}
+\newcommand{\bbN}{\mathbb{N}}
+\newcommand{\bbO}{\mathbb{O}}
+\newcommand{\bbP}{\mathbb{P}}
+\newcommand{\bbQ}{\mathbb{Q}}
+\newcommand{\bbR}{\mathbb{R}}
+\newcommand{\bbS}{\mathbb{S}}
+\newcommand{\bbT}{\mathbb{T}}
+\newcommand{\bbU}{\mathbb{U}}
+\newcommand{\bbV}{\mathbb{V}}
+\newcommand{\bbW}{\mathbb{W}}
+\newcommand{\bbX}{\mathbb{X}}
+\newcommand{\bbY}{\mathbb{Y}}
+\newcommand{\bbZ}{\mathbb{Z}}
+
+%% script math capitals
+\newcommand{\sA}{\mathscr{A}}
+\newcommand{\sB}{\mathscr{B}}
+\newcommand{\sC}{\mathscr{C}}
+\newcommand{\sD}{\mathscr{D}}
+\newcommand{\sE}{\mathscr{E}}
+\newcommand{\sF}{\mathscr{F}}
+\newcommand{\sG}{\mathscr{G}}
+\newcommand{\sH}{\mathscr{H}}
+\newcommand{\sI}{\mathscr{I}}
+\newcommand{\sJ}{\mathscr{J}}
+\newcommand{\sK}{\mathscr{K}}
+\newcommand{\sL}{\mathscr{L}}
+\newcommand{\sM}{\mathscr{M}}
+\newcommand{\sN}{\mathscr{N}}
+\newcommand{\sO}{\mathscr{O}}
+\newcommand{\sP}{\mathscr{P}}
+\newcommand{\sQ}{\mathscr{Q}}
+\newcommand{\sR}{\mathscr{R}}
+\newcommand{\sS}{\mathscr{S}}
+\newcommand{\sT}{\mathscr{T}}
+\newcommand{\sU}{\mathscr{U}}
+\newcommand{\sV}{\mathscr{V}}
+\newcommand{\sW}{\mathscr{W}}
+\newcommand{\sX}{\mathscr{X}}
+\newcommand{\sY}{\mathscr{Y}}
+\newcommand{\sZ}{\mathscr{Z}}
+
+
+\renewcommand{\emptyset}{\O}
+
+\newcommand{\abs}[1]{\lvert #1 \rvert}
+\newcommand{\norm}[1]{\lVert #1 \rVert}
+\newcommand{\sm}{\setminus}
+
+
+
+\newcommand{\sarr}{\rightarrow}
+\newcommand{\arr}{\longrightarrow}
+
+% NOTE: Defining collaborators is optional; to not list collaborators, comment out the line below.
+%\newcommand{\collaborators}{Alyssa P. Hacker (\texttt{aphacker}), Ben Bitdiddle (\texttt{bitdiddle})}
+
+\input{paolo-pset.tex}
+
+% NOTE: To compile a version of this pset without problems, solutions, or reflections, uncomment the relevant line below.
+
+%\excludeversion{problem}
+%\excludeversion{solution}
+%\excludeversion{reflection}
+
+\begin{document}	
+
+	% Use the \psetheader command at the beginning of a pset. 
+	\psetheader
+\section*{Problem 1 \heart}
+
+
+Stock and Watson, Exercises 6.6, 6.9\\
+
+\begin{enumerate}
+    \item (\textbf{6.6})
+A researcher plans to study the causal effect of police on crime, using data from a random sample of U.S. counties. He plans to regress the county’s crime rate on the (per capita) size of the county’s police force.
+
+\begin{enumerate}
+    \item[(a)] Explain why this regression is likely to suffer from omitted variable bias. Which variables would you add to the regression to control for important omitted variables?
+\begin{solution}
+    Because his error term is full of life! Imagine how many variables go into crime other than policing force. Consider the income level of the counties or the race makeup of the county or unemployment levels. These should all be added to control. 
+\end{solution}
+    \item[(b)] Use your answer to (a) and the expression for omitted variable bias given in Equation (6.1) to determine whether the regression will likely over- or underestimate the effect of police on the crime rate. That is, do you think that 
+    \[
+    \hat{\beta}_1 > \beta_1 \quad \text{or} \quad \hat{\beta}_1 < \beta_1?
+    \]
+    \begin{solution}
+        I think investigations will show the higher the poverty level, the higher the crime will be. Thus, $\Cov(U_i, X_i)>0,$ and thus the regression will overestimate the effect of police on crime. Hence, we should find more effective methods than policing to handle crime. 
+    \end{solution}
+\end{enumerate}
+
+\item (\textbf{6.9}) Suppose $(Y_i, X_{1i}, X_{2i})$ satisfy the assumptions in Key Concept 6.4. You are interested in $\beta_1$, the causal effect of $X_1$ on $Y$. Suppose $X_1$ and $X_2$ are uncorrelated. You estimate $\beta_1$ by regressing $Y$ onto $X_1$ (so that $X_2$ is not included in the regression). Does this estimator suffer from omitted variable bias? Explain.
+\begin{solution}
+    No, this is answered by Key Concept 6.1 in the textbook! Also, from the slides, 
+    \[\Bias = \frac{\beta_2 \Cov(X_1, X_2)}{\Var(X_1)} = 0.\]
+\end{solution}
+\end{enumerate}
+
+
+\newpage
+\section*{Problem 2 \heart}
+
+Suppose
+\[
+Y = \beta_0 + \beta_1 X + U,
+\]
+where \( Y \) is a binary random variable. Suppose further that \( \mathbb{E}[U \mid X] = 0 \) and \( 0 < \operatorname{Var}[X] < \infty \).
+
+\begin{enumerate}[label=(\alph*)]
+    \item What is \( \mathbb{E}[Y \mid X] \)? What is \( \mathbb{P}(Y = 1 \mid X) \)?
+    \begin{solution}
+        Using LIE, 
+        \begin{align*}
+            \bbE[Y \mid X] &= \bbE[\beta_0 + \beta_1 X + U \mid X]\\
+            &= \beta_0 + \beta_1X + \bbE[U \mid X]\\
+            &= \beta_0 + \beta_1 X
+        \end{align*}
+        We have that since $Y$ is binary, then
+        \begin{align*}
+            \bbP(Y = 1 \mid X) &= \bbE[Y \mid X]
+        \end{align*}
+    \end{solution}
+    \item What is \( \operatorname{Var}[Y \mid X] \)?
+    \begin{solution}
+    Since $Y$ is binary then $Y^2 = Y.$ 
+    \begin{align*}
+        \Var(Y \mid X) &= \bbE[Y^2 \mid X] - \bbE[Y \mid X]^2\\
+        &=   \bbE[Y \mid X](1 - \bbE[Y \mid X])
+    \end{align*}
+    where we have seen what $\bbE[Y \mid X]$ is above.
+
+    \end{solution}
+    \item What is \( \operatorname{Var}[U \mid X] \)? Is the model homoskedastic or heteroskedastic?
+    \begin{solution}
+        Computing, 
+        \begin{align*}
+            \Var(U \mid X) &= \Var(Y - \beta_0 - \beta_1X \mid X)\\
+            &=\Var(Y \mid X)
+        \end{align*}
+        and thus $U$ is heterodestatic because $\Var(Y \mid X)$ depends on $X$ from parts (a), (b)
+    \end{solution}
+    \item Let \( (Y_1, X_1), \dots, (Y_n, X_n) \) be an i.i.d. sample from \( (Y, X) \). In addition to the assumptions above, suppose that \( \mathbb{E}[X^4] < \infty \). Assume that the sample size \( n \) is large.
+    \begin{enumerate}[label=(\roman*)]
+        \item How would you test the null hypothesis that \( \beta_1 = 0 \) versus the alternative that \( \beta_1 \neq 0 \) at the 5\% significance level?
+        \begin{solution}
+            Since $U$ is hetero, 
+            then we consider 
+            \[T = \frac{\hat\beta_1}{\text{SE}(\beta_1)} \sim N(0,1),\] and reject if $T > 1.96$
+        \end{solution}
+        \item How would you compute the p-value for the test in part (i)?
+        \begin{solution}
+            From the previous problem, it is clear that $p = 2(1-\Phi(T))$
+        \end{solution}
+        \item How would you construct a (two-sided) confidence interval for \( \beta_1 \) at the 5\% significance level?
+        \begin{solution}
+            Light work, 
+            \[\beta \in [\hat{\beta}_1 \pm 1.96\text{SE}(\hat\beta_1)]\]
+        \end{solution}
+    \end{enumerate}
+\end{enumerate}
+
+\newpage
+\section*{Problem 3 \heart}
+
+Consider the following regression model in the population:
+\[
+Y_i = X_i' \beta + U_i,
+\]
+where \( Y_i \) is a scalar (1x1 vector) that represents the outcome for observation \( i \), \( X_i = (1, X_{1i}, X_{2i}, \ldots, X_{ki})' \) is a \( (k+1) \times 1 \) vector that contains the \( k \) regressors plus one intercept (represented by the value 1), and \( U_i \) is a scalar that represents the error term. Moreover, \( \beta = (\beta_0, \beta_1, \ldots, \beta_k)' \) is a \( (k+1) \times 1 \) vector that contains all the population parameters in the BLP \( \mathbb{E}[Y \mid X] \).
+
+\begin{enumerate}[label=(\alph*)]
+    \item Show that the equation above is equivalent to
+    \[
+    Y_i = \beta_0 + \beta_1 X_{1i} + \cdots + \beta_k X_{ki} + U_i.
+    \]
+    \begin{solution}
+        This is just matrix multiplication, 
+        \[Y_i = X^T\beta + U_i  = \begin{pmatrix}
+    1 & X_1 & X_2 & \cdots &X_k
+        \end{pmatrix}\begin{pmatrix}
+            \beta_0 \\ \beta_1\\ \vdots \\\beta_k
+        \end{pmatrix} + U_i = \beta_0 + \beta_1 X_1 + \cdots + \beta_kX_k + U_i\]
+    \end{solution}
+    
+    \item Multiply the original model by the vector \( X_i \), such that
+    \[
+    X_i Y_i = X_i X_i' \beta + X_i U_i.
+    \]
+    Perform the multiplication of the matrices to show each element that is inside the vectors: \( X_i Y_i \), \( X_i X_i' \), and \( X_i U_i \).
+    \begin{solution}
+        \begin{align*}
+            X_i Y_i &=\begin{pmatrix}
+                1 \\ X_1 \\\vdots \\ X_k
+            \end{pmatrix} Y_i = \begin{pmatrix}
+                Y_i \\ Y_iX_1 \\\vdots \\ Y_iX_k
+            \end{pmatrix} \\
+            X_iX_i^T &= \begin{pmatrix}
+                1 \\ X_1 \\\vdots \\ X_k
+            \end{pmatrix}\begin{pmatrix}
+    1 & X_1 & X_2 & \cdots &X_k
+        \end{pmatrix} = \begin{pmatrix}
+1 \\
+X_{1i} \\
+\vdots \\
+X_{ki}
+\end{pmatrix}
+\begin{pmatrix}
+1 & X_{1i} & \cdots & X_{ki}
+\end{pmatrix}
+=
+\begin{pmatrix}
+1 & X_{1i} & \cdots & X_{ki} \\
+X_{1i} & X_{1i}^2 & \cdots & X_{1i} X_{ki} \\
+\vdots & \vdots & \ddots & \vdots \\
+X_{ki} & X_{1i} X_{ki} & \cdots & X_{ki}^2
+\end{pmatrix}
+        \end{align*}
+        For the last it's literally the same as the first just replace $Y_i$ with $U_i$
+    \end{solution}
+    \item Now assume \( \mathbb{E}[X_i U_i] = 0 \). Notice that this is a set of \( k+1 \) equations. Show that it implies that \( \mathbb{E}[U_i] = 0 \) and \( \operatorname{Cov}(X_{ji}, U_i) = 0 \), when \( j = 1, \ldots, k \).
+    \begin{solution}
+        We are assuming 
+        \begin{align*}
+            \begin{pmatrix}
+                \bbE[U_i]\\
+                \bbE[X_1 U_i]\\
+                \bbE[X_2 U_i]\\
+                \vdots\\
+                \bbE[X_k U_i]
+            \end{pmatrix} = \begin{pmatrix}
+                0\\0\\0\\\vdots\\0
+            \end{pmatrix}
+        \end{align*}
+        and we immediately see that $\bbE[U_i] = 0$ and $\bbE[X_{j}, U_i] = 0$ for all $j\geq 0$  We also know that 
+        \[\Cov(X_{ji}, U_i) = \bbE[X_{ji}, U_i] - \bbE[X_{ji}]\bbE[U_i] = 0 - 0 = 0.\]
+    \end{solution}
+    
+    \item Show that if \( \mathbb{E}[X_i U_i] = 0 \), then this system of equations has the solution
+    \[
+    \beta = \left( \mathbb{E}[X_i X_i'] \right)^{-1} \mathbb{E}[X_i Y_i].
+    \]
+    Which additional assumption have you used in this question?
+    \begin{solution}
+        Taking expectations, we see that 
+        \[\bbE[X_i Y_i] = \bbE[X_i X^T]\beta + \bbE[X_i U_i] = \bbE[X_i X_i^T]\beta.\] Assuming that $\bbE[X_iX^T]$ is invertible, we multiply by the inverse on both sides and conclude.
+    \end{solution}
+\end{enumerate}
+
+
+
+
+
+    \end{document}
