@@ -18,7 +18,6 @@
 \usepackage{pdfpages}
 \usepackage{tabularx}
 \usepackage{pdflscape}
-\usepackage{emoji}
 \usepackage{makecell}
 \usepackage{booktabs}
 \usepackage{natbib}
@@ -49,7 +48,7 @@
 \setlist[enumerate, 2]{label=({\roman*})}
 
 \allowdisplaybreaks[1]
-\newcommand{\heart}{\ensuremath\heartsuit}
+
 \newcommand{\psetheader}{
 	\ifthenelse{\isundefined{\collaborators}}{
 		\begin{center}
@@ -103,7 +102,7 @@
 
 \newenvironment{solution}{%
 	\leavevmode\begin{tcolorbox}[breakable, colback=green!5!white,colframe=green!75!black, enhanced jigsaw] \proof[\scshape Solution:] \setlength{\parskip}{2mm}%
-	}{\renewcommand{\qedsymbol}{$\heart$} \endproof \end{tcolorbox}}
+	}{\renewcommand{\qedsymbol}{$\heartsuit$} \endproof \end{tcolorbox}}
 
 \newenvironment{reflection}{\begin{tcolorbox}[breakable, colback=black!8!white,colframe=black!60!white, enhanced jigsaw, parbox = false]\textsc{Reflections:}}{\end{tcolorbox}}
 
