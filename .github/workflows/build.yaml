@@ -6,12 +6,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - name: Compile LaTeX
         uses: xu-cheng/latex-action@v3
         with:
-          root_file: ECON 21020 Econometrics/20210 Notes.tex
+          root_file: 20210 Notes.tex
+          working_directory: ECON 21020 Econometrics
+
       - name: Get timestamp
         run: echo "TIMESTAMP=$(date +'%Y-%m-%d %T')" >> $GITHUB_ENV
+
       - name: Release
         uses: softprops/action-gh-release@v2
         with:
