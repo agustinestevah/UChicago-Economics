@@ -10,8 +10,7 @@ jobs:
       - name: Compile LaTeX
         uses: xu-cheng/latex-action@v3
         with:
-          working_directory: "ECON 21020 Econometrics"
-          root_file: 20210_Notes.tex
+          root_file: "ECON 21020 Econometrics/20210_Notes.tex"
 
       - name: Get timestamp
         run: echo "TIMESTAMP=$(date +'%Y-%m-%d %T')" >> $GITHUB_ENV
