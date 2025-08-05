@@ -12,6 +12,7 @@ jobs:
         with:
           root_file: "20210 Notes.tex"
           working_directory: "ECON 21020 Econometrics"
+          args: "-pdf -file-line-error -halt-on-error -interaction=nonstopmode '20210 Notes.tex'"
 
       - name: Get timestamp
         run: echo "TIMESTAMP=$(date +'%Y-%m-%d %T')" >> $GITHUB_ENV
