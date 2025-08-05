@@ -1,0 +1,177 @@
+\documentclass[10pt, oneside]{article} 
+\usepackage{amsmath, amsthm, amssymb, calrsfs, wasysym, verbatim, bbm, color, graphics, geometry, esint, float}
+\usepackage{mdframed}
+
+
+
+\geometry{tmargin=.75in, bmargin=.75in, lmargin=.75in, rmargin = .75in}  
+
+\newcommand{\bbR}{\mathbb{R}}
+\newcommand{\bbC}{\mathbb{C}}
+\newcommand{\bbZ}{\mathbb{Z}}
+\newcommand{\bbP}{\mathbb{P}}
+\newcommand{\bbN}{\mathbb{N}}
+\newcommand{\bbQ}{\mathbb{Q}}
+\newcommand{\Cdot}{\boldsymbol{\cdot}}
+\newcommand{\scA}{\mathscr{A}}
+\newcommand{\curl}{\text{curl}}
+\newcommand{\Ind}{\text{Ind}}
+\newcommand{\Log}{\text{Log}}
+\newcommand{\Vol}{\text{Vol}}
+\newcommand{\Var}{\text{Var}}
+\newcommand{\Cov}{\text{Cov}}
+\newcommand{\Corr}{\text{Corr}}
+\newcommand{\bbE}{\mathbb{E}}
+\newcommand{\bbV}{\mathbb{V}}
+
+
+
+
+\newcommand{\sm}{\setminus}
+
+\theoremstyle{definition}
+\newtheorem{exmp}{Example}[section]
+\newtheorem{thm}{Theorem}
+\newtheorem{defn}{Definition}
+\newtheorem{prop}{Proposition}
+\newtheorem{conv}{Convention}
+\newtheorem{rem}{Remark}
+\newtheorem{lem}{Lemma}
+\newtheorem{cor}{Corollary}
+
+\input{paolo-pset.tex}
+
+
+
+\title{UChicago Econometrics Notes: 20510}
+\author{Notes by Agustín Esteva, Lectures by Murilo Ramos}
+\date{Academic Year 2024-2025}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\vspace{.25in}
+
+
+\newpage
+\section{Lectures}
+
+\subsection*{Lecture 1: The Envelope Theorem}
+\begin{thm} (Inverse Function Theorem)
+    Suppose $f: \bbR^n \to \bbR$ and $g_j: \bbR^n \to \bbR$ is $C^1$ for $j \in [m]$ (i.e, $g: \bbR^n \to \bbR^m$). Suppose $f$ has a local extremum at $x_0$ with the constraint $g(x) =0$ and $\text{rank}(Dg_{x_0}) = m.$ Then there are real numbers, called \textbf{Lagrange Multipliers} $\lambda_j \in \bbR$ such that 
+    \[\nabla f(x_0) = \sum_{j=1}^m \lambda_j \nabla g_j(x_0)\]
+\end{thm}
+
+We will prove this for the $m = 1,$ $n=2$ case, which states that if $f: \bbR^2 \to \bbR$ and $g: \bbR^2 \to \bbR$ is $C^1,$ then if $f$ has a local extremum at $x_0$ with the constraint of $g(x) = 0,$ and $\nabla g(x_0) \neq 0,$ then there exists some $\lambda \in \bbR$ such that 
+\[\nabla f(x_0) = \lambda \nabla g(x_0).\]
+\begin{proof}
+    By the implicit function theorem, we have that $g(x_1, x_2) = 0$ can locally be written as either 
+    \[g(x_1, \gamma(x_2)) =0, \qquad \text{or}\qquad g(\beta(x_2), x_2) = 0.\] Let's concentrate on the first. Then for all $x_1 \in U,$ we write $g(x_1, \gamma(x_2)) = 0.$ By assumption, we have that that by the chain rule
+    \begin{align}
+        0 = \frac{d}{dx_1}g(x_1, \gamma(x_1)) = \langle 
+    \nabla g(x_1, \gamma(x_1)), \begin{pmatrix}
+        1 \\ \gamma'(x)
+    \end{pmatrix}
+    \rangle.
+    \end{align} We have that the function $\hat{f}: U \to \bbR$ with $\hat{f}(x_1) = f(x_1, \gamma(x_1))$ has a local extremum at $x_{0_1}.$ Thus, we have that 
+    \[0 = \hat{f}'(x_{0_{1}}) = \langle \nabla f(x_{0_1}, \gamma(x_{0_1})), \begin{pmatrix}
+        1 \\ \gamma'(x_{0_1})
+    \end{pmatrix}\rangle\] Because (1) holds for any $x\in U,$ then we have the $\nabla f$ and $\nabla g$ are orthagonal to each other, and so there must exist some real $\lambda$ such that 
+    \[\nabla f = \lambda \nabla g.\]
+\end{proof}
+\begin{thm} (Envelope Theorem)
+    Suppose $f(x, \alpha), g_j(x,\alpha): \bbR^{n + \ell} \to \bbR,$ for $j = 1, 2,\dots, \ell$ and $g_j(x,\alpha) \geq 0$ for all $j$. If we call 
+    \[x^*(\alpha) = \max_xf(x, \alpha),\] and assume $\nabla g(x^*(\alpha), \alpha) \neq 0$ and define
+    \[V(\alpha)= f(x^*(\alpha), \alpha),\] then for each $j \in [k],$ we have 
+    \[\frac{\partial V(\alpha)}{\partial \alpha_j} = \frac{\partial \mathcal{L}(x^*(\alpha), \lambda^*, \alpha)}{\partial \alpha_j},\] where 
+    \[\mathcal{L}(x, \lambda, \alpha) = f(x, \alpha) - \lambda g(x, \alpha)\] and $\lambda^*$ are the Lagrange multipliers. 
+\end{thm}
+\begin{proof}
+    We use the chain rule to see that 
+    \begin{align*}
+      \frac{\partial V(\alpha)}{\partial \alpha_k} &= \frac{\partial f(x^*(\alpha), \alpha)}{\partial \alpha_k}\\
+      &= \nabla_x f(x^*(\alpha), \alpha) \cdot \frac{\partial x^*(\alpha)}{\partial \alpha_k}+\frac{\partial f(x^*(\alpha), \alpha)}{\partial \alpha_k}\\ &= -\sum \lambda_j^* \nabla_x g(x^*(\alpha), \alpha) \cdot \frac{\partial x^*(\alpha)}{\partial \alpha_k}+\frac{\partial f(x^*(\alpha), \alpha)}{\partial \alpha_j}\\
+      &= -\sum \lambda_j^*\frac{\partial g_j(x^*(\alpha), \alpha)}{\partial \alpha_k} + \frac{\partial f(x^*(\alpha), \alpha)}{\partial \alpha_k}\\
+      &= \frac{\partial}{ \partial \alpha_j} (f(x^*(\alpha), \alpha) - \sum_{j=1}^\ell\lambda_j^* g_j(x^*(\alpha), \alpha))\\
+      &= \frac{\partial \mathcal{L}(x^*(\alpha), \lambda^*(\alpha), \alpha}{\partial \alpha_j}
+    \end{align*}
+\end{proof}
+
+\begin{exmp}
+    Let $p_x$ and $p_y$ be the prices of good $x$ and good $y.$ Suppose a consumer wants to maximize 
+    \[\max_{x,y}\,U(x,y)\quad \text{s.t.}\quad p_xx  + p_yy \leq m.\] That is, she wants to maximize the utility from buying $x$ and $y$ with an income of $m.$ Then if $V(m) = U(x^*,y^*)$ subject to $g(x,y,m) =: p_xx + p_yy - m = 0.$ Then the Lagrangian is given by 
+    \[\mathcal{L}((x, y),\lambda, m)= U(x,y) - \lambda g(x,y,m)\] and thus by the Envelope Theorem, 
+    \begin{align}
+    \frac{\partial V}{\partial m}(x^*, y^*, m) &= \frac{\partial \cal L}{\partial m}(x^*, y^*, m) = -\lambda^*(-1) = \lambda^*
+    \end{align}
+     
+\end{exmp}
+
+\newpage
+\subsection*{Lecture 2: Scarcity: The Budget Constraint}
+\begin{defn}
+    Let $x_1, \dots, x_n$ be goods with non-zero prices $p_{x_1}, \dots, p_{x_n}$ respectively. We say that the \textbf{budget set} is the set of all bundles of goods a consumer can buy given a budget/income $m$. That is, 
+    \[B(p_{x_1}, \dots, p_{x_n}, m) = \{(x_1, \dots, x_n)\in \bbR^n \mid \sum_{j=1}^n  p_{x_j}x_j \leq m\}\]
+\end{defn}
+\begin{rem}
+    Notice that the optimal bundles are given by the boundary line 
+    \[\sum_{j=1}^n  p_{x_j}x_j = m\] Implying that
+    \[x_k = \frac{1}{p_{x_k}} \left(-\sum_{j=1, j \neq k}^n[p_{x_j}x_j] + m\right)  \] and thus 
+    \[\frac{\partial x_k}{\partial x_i}=  -\frac{p_{x_i}}{p_{x_k}}\] is the rate at which the market allows the consumer to trade good $x_i$  to $x_k.$ 
+\end{rem}
+\begin{defn}
+    \begin{itemize}
+    Let $\succeq$ be a relation.
+        \item We say that a consumer \textbf{prefers} $x_1$ to $x_2$ if $x_2 \succeq x_1$ and \textbf{strictly prefers} $x_1$ to $x_2$ if $x_1 \succ x_2.$  
+        \item  We say that a consumer's preference is \textbf{complete} if for any $x_1, x_2$ consumption bundles, either $x_1 \succeq x_2$ or $x_2 \succeq x_1.$
+        \item We say that a consumer's preference is \textbf{transitive} if  when $x_1 \succeq x_2$ and $x_2 \succeq x_3,$ then $x_1 \succeq x_3.$
+        \item We say that a consumer's preference is \textbf{rational} if it is both complete, symmetric, and rational.
+        \item We say that a consumer's preference is \textbf{continuous} if when $x_1 \succ x_2,$ there exist neighborhoods $N_1, N_2$ such that for all $x \in N_1$ we have $x \succ x_2$ and symmetrically for $N_2.$
+    \end{itemize}
+\end{defn}
+\begin{thm}
+    (Utility Representation Theorem) If a preference ordering is rational, then it admits a utility function representation that is unique up to a monotonically increasing transformation.
+\end{thm}
+
+\newpage
+\subsection*{Lecture 3: Utility Maximization}
+\begin{defn}
+    The \textbf{marginal rate of substitution} (MRS) is defined to be 
+    \[\frac{dy}{dx} = -\frac{U_x}{U_y},\] and it measures an individual's willingness to pay for $x$ in terms of $y.$ 
+\end{defn}
+
+\begin{rem}
+In the setting of Example 1.1, we wish to
+maximize \[dU = U_x dx + U_ydy\] such that $p_x dx + p_ydy= 0$ (equivalently, $dy = -\frac{p_x}{p_y}dx$). Plugging in gives 
+\begin{align}
+    dU = U_xdx + U_y(-\frac{p_x}{p_y}dx) = \left[U_x - U_y\frac{p_x}{p_y}\right]dx
+\end{align}
+\begin{enumerate}
+    \item If $U_x/U_y > p_x/p_y,$ set $dx>0$ so that 
+    \[\left[\frac{U_x}{U_y} - \frac{p_x}{p_y}\right]U_y dx\] is \underline{taking advantage of all trading opportunities}
+    \item If $U_x/p_x > U_y/p_y,$ set $dx>0$ so that 
+    \[\left[\frac{U_x}{p_x} - \frac{U_y}{p_y}\right]p_x dx\] is the \underline{bang for your buck}.
+    \item If $U_x > U_y \cdot p_x/p_y,$ then setting $dx>0,$ 
+    \[\left[U_x - U_y\frac{p_x}{p_y}\right]dx\] is the \underline{trade until the marginal cost equals the marginal benefit}
+\end{enumerate}
+Recall from (2) that \[\frac{\partial V}{\partial m}(x^*, y^*, m) = \lambda^*.\] Using the Envelope Theorem, we see that 
+\begin{align}
+    \frac{\partial V^*}{\partial p_x} = \frac{\partial \cal L^*}{\partial p_x} = -\lambda^* x^*
+\end{align}
+
+\end{rem}
+
+\subsection*{Lecture 4: Expenditure Minimization} 
+We seek to find the bundle that minimizes the expenditure that achieves a certain utility $\underline{U}.$ That is 
+\[e(x,y,\bar U) = \min_{x,y} p_x x + p_yy \qquad U(x,y) = \bar U.\] Solving gives the Lagrangian
+\[\mathcal{L}(x,y,\bar U) = e(x,y,\bar U) - \lambda (U(x,y) - \bar U) = p_x x + p_yy- \lambda (U(x,y) - \bar U)\]
+with first order conditions 
+\[0=\frac{\partial \cal L}{\partial x}(x^*, y^*, \bar U) = p_x - \lambda^* U_x(x,y) \implies p_x = \lambda^* U_x(x,y)\]
+\[0 = \frac{\partial \cal L}{\partial x}(x^*, y^*, \bar U) = p_y - \lambda^* U_y(x,y) \implies p_y = \lambda^* U_y(x,y)\]
+\[U(x^*, y^*)= \bar U\]
+
+
+
+\end{document}
