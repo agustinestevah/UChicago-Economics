@@ -7,15 +7,10 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Debug files
-        run: |
-          ls -R "ECON 21020 Econometrics"
-          pwd
-
-      - name: Compile LaTeX
+      - name: Install LaTeX
         uses: xu-cheng/latex-action@v3
         with:
-          root_file: "ECON 21020 Econometrics/20210 Notes.tex"
+          root_file: "./ECON\ 21020\ Econometrics/20210\ Notes.tex"
           args: -shell-escape -interaction=nonstopmode -file-line-error
 
       - name: Upload PDF
