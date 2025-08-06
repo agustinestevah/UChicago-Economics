@@ -10,12 +10,12 @@ jobs:
       - name: Compile LaTeX document
         uses: xu-cheng/latex-action@v3
         with:
-          root_file: "20210 Notes.tex"
-          working_directory: "ECON 21020 Econometrics"
+          root_file: "\20210 Notes.tex\"
+          working_directory: "\ECON 21020 Econometrics\"
           args: -shell-escape -interaction=nonstopmode -file-line-error
 
       - name: Upload PDF artifact
         uses: actions/upload-artifact@v4
         with:
           name: pdf
-          path: "ECON 21020 Econometrics/20210 Notes.pdf"
+          path: "\ECON 21020 Econometrics/20210 Notes.pdf\"
