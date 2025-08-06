@@ -7,11 +7,15 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Install LaTeX
-        uses: xu-cheng/latex-action@v3
+      - name: Set up TeX Live
+        uses: dante-ev/latex-action@v2
         with:
-          root_file: "./ECON\ 21020\ Econometrics/20210\ Notes.tex"
-          args: -shell-escape -interaction=nonstopmode -file-line-error
+          latex-distribution: texlive-full
+
+      - name: Compile LaTeX
+        run: |
+          cd "ECON 21020 Econometrics"
+          latexmk -pdf -shell-escape -interaction=nonstopmode "20210 Notes.tex"
 
       - name: Upload PDF
         uses: actions/upload-artifact@v4
