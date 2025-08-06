@@ -7,18 +7,18 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up TeX Live
-        uses: dante-ev/latex-action@v2
-        with:
-          latex-distribution: texlive-full
+      - name: Install LaTeX (full TeX Live)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y texlive-full latexmk
 
-      - name: Compile LaTeX
+      - name: Compile LaTeX document
         run: |
           cd "ECON 21020 Econometrics"
           latexmk -pdf -shell-escape -interaction=nonstopmode "20210 Notes.tex"
 
-      - name: Upload PDF
+      - name: Upload PDF artifact
         uses: actions/upload-artifact@v4
         with:
-          name: pdf
+          name: lecture-notes-pdf
           path: "ECON 21020 Econometrics/20210 Notes.pdf"
