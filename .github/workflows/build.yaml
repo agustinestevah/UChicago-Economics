@@ -7,18 +7,22 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Install LaTeX (full TeX Live)
+      - name: Install LaTeX
         run: |
           sudo apt-get update
           sudo apt-get install -y texlive-full latexmk
 
-      - name: Compile LaTeX document
+      - name: Prepare template
+        run: |
+          cp paolo-pset.tex "ECON 21020 Econometrics/"
+
+      - name: Compile document
         run: |
           cd "ECON 21020 Econometrics"
           latexmk -pdf -shell-escape -interaction=nonstopmode "20210 Notes.tex"
 
-      - name: Upload PDF artifact
+      - name: Upload PDF
         uses: actions/upload-artifact@v4
         with:
-          name: lecture-notes-pdf
+          name: lecture-notes
           path: "ECON 21020 Econometrics/20210 Notes.pdf"
