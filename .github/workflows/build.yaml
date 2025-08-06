@@ -1,25 +1,20 @@
-name: Build PDF and release
-on: push
-
+name: Compile LaTeX to PDF
+on: [push]
 jobs:
-  build_latex:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-      - name: Compile LaTeX
+      - name: Compile LaTeX document
         uses: xu-cheng/latex-action@v3
         with:
-          root_file: "20210_Notes.tex"
-          working_directory: "ECON 21020 Econometrics"
-          args: "-pdf -file-line-error -halt-on-error -interaction=nonstopmode '20210_Notes.tex'"
+          root_file: ECON 21020 Econometrics/20210 Notes.tex
+          args: -shell-escape -interaction=nonstopmode -file-line-error
 
-      - name: Get timestamp
-        run: echo "TIMESTAMP=$(date +'%Y-%m-%d %T')" >> $GITHUB_ENV
-
-      - name: Release
-        uses: softprops/action-gh-release@v2
+      - name: Upload PDF artifact
+        uses: actions/upload-artifact@v4
         with:
-          name: Draft ${{ env.TIMESTAMP }}
-          files: "ECON 21020 Econometrics/20210_Notes.pdf"
-          draft: true
+          name: pdf
+          path: ECON 21020 Econometrics/20210 Notes.pdf
