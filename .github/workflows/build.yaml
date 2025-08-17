@@ -5,31 +5,36 @@ on:
       - main
     paths:
       - 'ECON 21020 Econometrics/20210 Notes.tex'
-      - 'Dockerfile'
-      - '.github/workflows/compile.yml'
   workflow_dispatch:
 
 jobs:
   build_and_commit_pdf:
     name: Build and Commit Econometrics Notes PDF
     runs-on: ubuntu-latest
+    container:
+      image: texlive/texlive:latest
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
       
-      - name: Set up TeX Live
-        uses: xu-cheng/latex-action@v3
-        with:
-          root_file: "ECON 21020 Econometrics/20210 Notes.tex"
-          working_directory: "./"
-          args: "-pdf -file-line-error -halt-on-error -interaction=nonstopmode"
-      
-      - name: Move PDF to correct location
+      - name: Compile LaTeX to PDF
         run: |
-          mv "20210 Notes.pdf" "ECON 21020 Econometrics/20210 Notes.pdf"
+          cd "ECON 21020 Econometrics"
+          pdflatex -file-line-error -interaction=nonstopmode "20210 Notes.tex"
+          # Run twice to resolve references
+          pdflatex -file-line-error -interaction=nonstopmode "20210 Notes.tex"
+        continue-on-error: true
+      
+      - name: Check if PDF was generated
+        run: |
+          if [ ! -f "ECON 21020 Econometrics/20210 Notes.pdf" ]; then
+            echo "PDF generation failed. Check LaTeX errors in the workflow logs."
+            exit 1
+          fi
       
       - name: Commit and Push PDF
         run: |
+          git config --global --add safe.directory /__w/UChicago-Economics/UChicago-Economics
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Actions"
           git add "ECON 21020 Econometrics/20210 Notes.pdf"
