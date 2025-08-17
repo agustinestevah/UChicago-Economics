@@ -1,28 +1,40 @@
-name: Compile LaTeX to PDF
-on: [push]
+name: Build and Commit Econometrics Notes PDF
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'ECON 21020 Econometrics/20210 Notes.tex'
+      - 'Dockerfile'
+      - '.github/workflows/compile.yml'
+  workflow_dispatch:
+
 jobs:
-  build:
+  build_and_commit_pdf:
+    name: Build and Commit Econometrics Notes PDF
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
+      - name: Checkout Repository
         uses: actions/checkout@v4
-
-      - name: Install LaTeX
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y texlive-full latexmk
-
-      - name: Prepare template
-        run: |
-          cp paolo-pset.tex "ECON 21020 Econometrics/"
-
-      - name: Compile document
-        run: |
-          cd "ECON 21020 Econometrics"
-          latexmk -pdf -shell-escape -interaction=nonstopmode "20210 Notes.tex"
-
-      - name: Upload PDF
-        uses: actions/upload-artifact@v4
+      
+      - name: Set up TeX Live
+        uses: xu-cheng/latex-action@v3
         with:
-          name: lecture-notes
-          path: "ECON 21020 Econometrics/20210 Notes.pdf"
+          root_file: "ECON 21020 Econometrics/20210 Notes.tex"
+          working_directory: "./"
+          args: "-pdf -file-line-error -halt-on-error -interaction=nonstopmode"
+      
+      - name: Move PDF to correct location
+        run: |
+          mv "20210 Notes.pdf" "ECON 21020 Econometrics/20210 Notes.pdf"
+      
+      - name: Commit and Push PDF
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Actions"
+          git add "ECON 21020 Econometrics/20210 Notes.pdf"
+          if git diff --staged --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "Automated build of 20210 Notes.pdf"
+            git push
