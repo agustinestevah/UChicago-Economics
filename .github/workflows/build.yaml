@@ -7,22 +7,25 @@ on:
       - 'ECON 21020 Econometrics/20210 Notes.tex'
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   build_and_commit_pdf:
     name: Build and Commit Econometrics Notes PDF
     runs-on: ubuntu-latest
-    container:
-      image: texlive/texlive:latest
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
       
       - name: Compile LaTeX to PDF
-        run: |
-          cd "ECON 21020 Econometrics"
-          pdflatex -file-line-error -interaction=nonstopmode "20210 Notes.tex"
-          # Run twice to resolve references
-          pdflatex -file-line-error -interaction=nonstopmode "20210 Notes.tex"
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: "20210 Notes.tex"
+          working_directory: "ECON 21020 Econometrics"
+          args: "-pdf -file-line-error -interaction=nonstopmode"
         continue-on-error: true
       
       - name: Check if PDF was generated
@@ -34,7 +37,6 @@ jobs:
       
       - name: Commit and Push PDF
         run: |
-          git config --global --add safe.directory /__w/UChicago-Economics/UChicago-Economics
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Actions"
           git add "ECON 21020 Econometrics/20210 Notes.pdf"
